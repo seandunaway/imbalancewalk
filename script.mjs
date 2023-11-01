@@ -1,6 +1,2 @@
-let quote = document.querySelector('h1')
+import * as elements from './elements.mjs'
 
-let canvases = document.querySelectorAll('canvas')
-for (let canvas of canvases) {
-    let context = canvas.getContext('2d')
-}
