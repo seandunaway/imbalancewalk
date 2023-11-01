@@ -19,5 +19,14 @@ canvas {
 
 h1 {
     color: var(--black);
-    font-size: 10em;
+p {
+    background-color: var(--black);
+    border-radius: 1rem;
+    bottom: 0;
+    color: var(--white);
+    font-family: monospace;
+    left: 50%;
+    padding: 1rem;
+    position: fixed;
+    transform: translate(-50%);
 }
