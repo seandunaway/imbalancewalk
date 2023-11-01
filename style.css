@@ -1,8 +1,8 @@
 :root {
-    --white: white;
     --black: #44475a;
-    --red: #f47c7c;
-    --green: #a1de93;
+    --green: #e4ffd9;
+    --red: #ffd6d6;
+    --white: white;
 }
 
 * {
