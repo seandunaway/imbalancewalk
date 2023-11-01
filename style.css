@@ -1,0 +1,23 @@
+:root {
+    --white: white;
+    --black: #44475a;
+    --red: #f47c7c;
+    --green: #a1de93;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+canvas {
+    background-color: var(--red);
+    border: thin solid var(--black);
+    height: 25%;
+    width: 100%;
+}
+
+h1 {
+    color: var(--black);
+    font-size: 10em;
+}
