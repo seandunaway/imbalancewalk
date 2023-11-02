@@ -39,7 +39,7 @@ function init(powermeter) {
     powermeter.context.fillStyle = powermeter.color.value
     powermeter.context.strokeStyle = powermeter.color.text_background
     powermeter.context.lineWidth = '0.5px'
-    powermeter.context.setLineDash([5, 5])
+    powermeter.context.setLineDash([20, 20])
 }
 
 function events(powermeter) {
