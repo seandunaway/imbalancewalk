@@ -4,7 +4,6 @@ export function create(options) {
         context: undefined,
         max: 60,
         min: 40,
-        step: 1,
         value: 50,
         flip: false,
         label: undefined,
