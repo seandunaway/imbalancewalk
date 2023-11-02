@@ -41,10 +41,10 @@ export function init(powermeter) {
     powermeter.canvas.height = powermeter.canvas.clientHeight * devicePixelRatio
     powermeter.canvas.width = powermeter.canvas.clientWidth * devicePixelRatio
     powermeter.canvas.style.backgroundColor = powermeter.color.background
+    powermeter.context.fillStyle = powermeter.color.value
 }
 
 export function draw(powermeter) {
-    powermeter.context.fillStyle = powermeter.color.value
     powermeter.context.clearRect(0, 0, powermeter.canvas.width, powermeter.canvas.height)
 
     let y = powermeter.flip ? 0 : powermeter.canvas.height
