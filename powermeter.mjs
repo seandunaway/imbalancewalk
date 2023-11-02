@@ -17,10 +17,10 @@ export function create(options) {
             line: true,
             label: true,
             set_value: true,
-            y: 0,
+            y: -100,
         },
-        on_click: undefined,
         on_mouse: undefined,
+        on_click: undefined,
         ...options
     }
 
@@ -44,16 +44,20 @@ function init(powermeter) {
 }
 
 function events(powermeter) {
+    let mouse_y_default = powermeter.mouse.y
+    addEventListener('mouseout', function (event) {
+        powermeter.mouse.y = mouse_y_default
+    })
+    addEventListener('mousemove', function (event) {
+        if (powermeter.on_mouse) powermeter.on_mouse(powermeter, event)
+        powermeter.mouse.y = calc_mouse_y(powermeter, event)
+    })
     addEventListener('mousedown', function (event) {
         if (powermeter.on_click) powermeter.on_click(powermeter, event)
         if (!powermeter.mouse.set_value) return
 
         let target = /** @type {HTMLCanvasElement} */ (event.target)
         if (powermeter.canvas.id == target.id) powermeter.value = calc_value_from_pixels(powermeter)
-    })
-    addEventListener('mousemove', function (event) {
-        if (powermeter.on_mouse) powermeter.on_mouse(powermeter, event)
-        powermeter.mouse.y = calc_mouse_y(powermeter, event)
     })
 }
 
