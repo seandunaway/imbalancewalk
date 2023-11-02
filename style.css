@@ -1,7 +1,5 @@
 :root {
     --black: #44475a;
-    --green: #e4ffd9;
-    --red: #ffd6d6;
     --white: white;
 }
 
@@ -11,7 +9,6 @@
 }
 
 canvas {
-    background-color: var(--red);
     border: thin solid var(--black);
     height: 25%;
     width: 100%;
