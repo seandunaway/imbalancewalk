@@ -50,10 +50,5 @@ export function draw(powermeter) {
     powermeter.context.fillRect(0, powermeter.canvas.height, powermeter.canvas.width, -(powermeter.canvas.height / 2))
 }
 
-export function on_click(powermeter) {
-
-}
-
-export function on_hover(powermeter) {
-
-}
+export function on_click(powermeter) {}
+export function on_hover(powermeter) {}
