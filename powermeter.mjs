@@ -15,10 +15,12 @@ export function create(options) {
         hover_line: true,
         hover_label: true,
 
-        color_background: '#ffd6d6',
-        color_value: '#e4ffd9',
-        color_text: 'white',
-        color_text_background: '#44475a',
+        color: {
+            background: '#ffd6d6',
+            value: '#e4ffd9',
+            text: 'white',
+            text_background: '#44475a',
+        },
 
         on_click,
         on_hover,
@@ -33,11 +35,11 @@ export function create(options) {
 export function init(powermeter) {
     if (!powermeter.canvas) throw new Error('canvas')
     if (!powermeter.context) powermeter.context = powermeter.canvas.getContext('2d')
-    powermeter.canvas.style.backgroundColor = powermeter.color_background
+    powermeter.canvas.style.backgroundColor = powermeter.color.background
 }
 
 export function draw(powermeter) {
-    powermeter.context.fillStyle = powermeter.color_value
+    powermeter.context.fillStyle = powermeter.color.value
     powermeter.context.clearRect(0, 0, powermeter.canvas.width, powermeter.canvas.height)
     powermeter.context.fillRect(0, powermeter.canvas.height, powermeter.canvas.width, -(powermeter.canvas.height / 2))
 }
