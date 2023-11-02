@@ -35,6 +35,10 @@ export function create(options) {
 export function init(powermeter) {
     if (!powermeter.canvas) throw new Error('canvas')
     if (!powermeter.context) powermeter.context = powermeter.canvas.getContext('2d')
+
+    powermeter.canvas.height = powermeter.canvas.clientHeight * devicePixelRatio
+    powermeter.canvas.width = powermeter.canvas.clientWidth * devicePixelRatio
+
     powermeter.canvas.style.backgroundColor = powermeter.color.background
 }
 
