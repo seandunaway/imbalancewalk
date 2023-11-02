@@ -25,22 +25,24 @@ export function create(options) {
     }
 
     init(powermeter)
+    events(powermeter)
     return powermeter
 }
 
-export function init(powermeter) {
+function init(powermeter) {
     if (!powermeter.canvas) throw new Error('canvas')
     if (!powermeter.context) powermeter.context = powermeter.canvas.getContext('2d')
 
     powermeter.canvas.height = powermeter.canvas.clientHeight * devicePixelRatio
     powermeter.canvas.width = powermeter.canvas.clientWidth * devicePixelRatio
-
     powermeter.canvas.style.backgroundColor = powermeter.color.background
     powermeter.context.fillStyle = powermeter.color.value
     powermeter.context.strokeStyle = powermeter.color.text_background
     powermeter.context.lineWidth = '0.5px'
     powermeter.context.setLineDash([5, 5])
+}
 
+function events(powermeter) {
     addEventListener('mousedown', function (event) {
         if (powermeter.on_click) powermeter.on_click()
     })
@@ -52,17 +54,23 @@ export function init(powermeter) {
 
 export function draw(powermeter) {
     powermeter.context.clearRect(0, 0, powermeter.canvas.width, powermeter.canvas.height)
+    draw_value(powermeter)
+    draw_line(powermeter)
+}
 
+function draw_value(powermeter) {
     let y = powermeter.flip ? 0 : powermeter.canvas.height
     let h_sign = powermeter.flip ? 1 : -1
     powermeter.context.fillRect(0, y, powermeter.canvas.width, h_sign * calc_y(powermeter))
+}
 
-    if (powermeter.mouse.line) {
-        powermeter.context.beginPath()
-        powermeter.context.moveTo(0, powermeter.mouse.y)
-        powermeter.context.lineTo(powermeter.canvas.width, powermeter.mouse.y)
-        powermeter.context.stroke()
-    }
+function draw_line(powermeter) {
+    if (!powermeter.mouse.line) return
+
+    powermeter.context.beginPath()
+    powermeter.context.moveTo(0, powermeter.mouse.y)
+    powermeter.context.lineTo(powermeter.canvas.width, powermeter.mouse.y)
+    powermeter.context.stroke()
 }
 
 function calc_y(powermeter) {
