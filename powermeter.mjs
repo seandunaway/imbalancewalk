@@ -24,8 +24,8 @@ export function create(options) {
             text_background: '#44475a',
         },
 
-        on_click,
-        on_mouse,
+        on_click: undefined,
+        on_mouse: undefined,
 
         ...options
     }
