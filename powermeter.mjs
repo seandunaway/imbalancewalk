@@ -25,7 +25,6 @@ export function create(options) {
         mouse: {
             line: true,
             label: undefined,
-            x: 0,
             y: 0,
         },
 
@@ -45,6 +44,7 @@ export function init(powermeter) {
 
     powermeter.canvas.height = powermeter.canvas.clientHeight * devicePixelRatio
     powermeter.canvas.width = powermeter.canvas.clientWidth * devicePixelRatio
+
     powermeter.canvas.style.backgroundColor = powermeter.color.background
     powermeter.context.fillStyle = powermeter.color.value
     powermeter.context.strokeStyle = powermeter.color.text_background
@@ -55,9 +55,7 @@ export function init(powermeter) {
         if (powermeter.on_click) powermeter.on_click()
     })
     addEventListener('mousemove', function (event) {
-        let {x, y} = calc_mouse(powermeter, event)
-        powermeter.mouse.x = x
-        powermeter.mouse.y = y
+        powermeter.mouse.y = calc_mouse_y(powermeter, event)
         if (powermeter.on_mouse) powermeter.on_mouse()
     })
 }
@@ -73,8 +71,6 @@ export function draw(powermeter) {
         powermeter.context.beginPath()
         powermeter.context.moveTo(0, powermeter.mouse.y)
         powermeter.context.lineTo(powermeter.canvas.width, powermeter.mouse.y)
-        powermeter.context.moveTo(powermeter.mouse.x, 0)
-        powermeter.context.lineTo(powermeter.mouse.x, powermeter.canvas.height)
         powermeter.context.stroke()
     }
 }
@@ -89,10 +85,7 @@ function calc_y(powermeter) {
     return Math.round(powermeter.canvas.height * percent)
 }
 
-function calc_mouse(powermeter, event) {
+function calc_mouse_y(powermeter, event) {
     let rect = powermeter.canvas.getBoundingClientRect()
-    return {
-        x: (event.clientX - rect.left) / (rect.right - rect.left) * powermeter.canvas.width,
-        y: (event.clientY - rect.top) / (rect.bottom - rect.top) * powermeter.canvas.height
-    }
+    return (event.clientY - rect.top) / (rect.bottom - rect.top) * powermeter.canvas.height
 }
