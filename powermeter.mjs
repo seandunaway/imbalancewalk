@@ -24,6 +24,17 @@ export function create(options) {
             text_background: '#44475a',
         },
 
+        label: {
+            text: undefined,
+            x: 0,
+            y: 0,
+        },
+
+        mouse: {
+            line: true,
+            label: undefined,
+        },
+
         on_click: undefined,
         on_mouse: undefined,
 
