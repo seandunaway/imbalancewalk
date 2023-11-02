@@ -47,8 +47,10 @@ export function init(powermeter) {
 export function draw(powermeter) {
     powermeter.context.clearRect(0, 0, powermeter.canvas.width, powermeter.canvas.height)
 
+    // draw from bottom or top?
     let y = powermeter.flip ? 0 : powermeter.canvas.height
     let h_sign = powermeter.flip ? 1 : -1
+
     powermeter.context.fillRect(0, y, powermeter.canvas.width, h_sign * calc_pixels(powermeter))
 }
 
