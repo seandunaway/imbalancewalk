@@ -46,6 +46,10 @@ export function init(powermeter) {
     powermeter.canvas.height = powermeter.canvas.clientHeight * devicePixelRatio
     powermeter.canvas.width = powermeter.canvas.clientWidth * devicePixelRatio
     powermeter.canvas.style.backgroundColor = powermeter.color.background
+    powermeter.context.fillStyle = powermeter.color.value
+    powermeter.context.strokeStyle = powermeter.color.text_background
+    powermeter.context.lineWidth = '0.5px'
+    powermeter.context.setLineDash([5, 5])
 
     addEventListener('mousedown', function (event) {
         if (powermeter.on_click) powermeter.on_click()
@@ -61,12 +65,20 @@ export function init(powermeter) {
 export function draw(powermeter) {
     powermeter.context.clearRect(0, 0, powermeter.canvas.width, powermeter.canvas.height)
 
-    // flip: draw from bottom or top?
     let y = powermeter.flip ? 0 : powermeter.canvas.height
     let h_sign = powermeter.flip ? 1 : -1
-
-    powermeter.context.fillStyle = powermeter.color.value
     powermeter.context.fillRect(0, y, powermeter.canvas.width, h_sign * calc_y(powermeter))
+
+    if (powermeter.mouse.line) {
+        powermeter.context.beginPath()
+        powermeter.context.moveTo(0, powermeter.mouse.y)
+        powermeter.context.lineTo(powermeter.canvas.width, powermeter.mouse.y)
+        powermeter.context.moveTo(powermeter.mouse.x, 0)
+        powermeter.context.lineTo(powermeter.mouse.x, powermeter.canvas.height)
+        powermeter.context.stroke()
+    }
+}
+
 function calc_y(powermeter) {
     if (powermeter.value > powermeter.max) powermeter.value = powermeter.max
     if (powermeter.value < powermeter.min) powermeter.value = powermeter.min
