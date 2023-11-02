@@ -6,7 +6,12 @@ let is = powermeter.create({canvas: elements.canvas.is, flip: true})
 let ib = powermeter.create({canvas: elements.canvas.ib})
 let rb = powermeter.create({canvas: elements.canvas.rb})
 
-powermeter.draw(rs)
-powermeter.draw(is)
-powermeter.draw(ib)
-powermeter.draw(rb)
+function frame() {
+    powermeter.draw(rs)
+    powermeter.draw(is)
+    powermeter.draw(ib)
+    powermeter.draw(rb)
+
+    requestAnimationFrame(frame)
+}
+requestAnimationFrame(frame)
