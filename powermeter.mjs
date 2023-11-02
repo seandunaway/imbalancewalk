@@ -16,6 +16,7 @@ export function create(options) {
         mouse: {
             line: true,
             label: true,
+            set_value: true,
             y: 0,
         },
         on_click: undefined,
@@ -44,13 +45,15 @@ function init(powermeter) {
 
 function events(powermeter) {
     addEventListener('mousedown', function (event) {
+        if (powermeter.on_click) powermeter.on_click(powermeter, event)
+        if (!powermeter.mouse.set_value) return
+
         let target = /** @type {HTMLCanvasElement} */ (event.target)
         if (powermeter.canvas.id == target.id) powermeter.value = calc_value_from_pixels(powermeter)
-        if (powermeter.on_click) powermeter.on_click(powermeter, event)
     })
     addEventListener('mousemove', function (event) {
-        powermeter.mouse.y = calc_mouse_y(powermeter, event)
         if (powermeter.on_mouse) powermeter.on_mouse(powermeter, event)
+        powermeter.mouse.y = calc_mouse_y(powermeter, event)
     })
 }
 
