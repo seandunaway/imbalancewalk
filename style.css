@@ -16,7 +16,7 @@ canvas {
 
 h1 {
     background-color: var(--white);
-    border: thin solid var(--black);
+    border: medium solid var(--black);
     border-radius: 1rem;
     color: var(--black);
     font-size: 6rem;
