@@ -48,14 +48,10 @@ export function init(powermeter) {
     powermeter.canvas.style.backgroundColor = powermeter.color.background
 
     addEventListener('mousedown', function (event) {
-        powermeter.mouse.x = event.offsetX
-        powermeter.mouse.y = event.offsetY
-        if (typeof powermeter.on_click == 'function') powermeter.on_click()
+        if (powermeter.on_click) powermeter.on_click()
     })
     addEventListener('mousemove', function (event) {
-        powermeter.mouse.x = event.offsetX
-        powermeter.mouse.y = event.offsetY
-        if (typeof powermeter.on_mouse == 'function') powermeter.on_mouse()
+        if (powermeter.on_mouse) powermeter.on_mouse()
     })
 }
 
