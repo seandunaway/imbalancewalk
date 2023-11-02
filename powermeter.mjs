@@ -55,7 +55,7 @@ function events(powermeter) {
 export function draw(powermeter) {
     powermeter.context.clearRect(0, 0, powermeter.canvas.width, powermeter.canvas.height)
     draw_value(powermeter)
-    draw_line(powermeter)
+    draw_mouse_line(powermeter)
 }
 
 function draw_value(powermeter) {
@@ -64,7 +64,7 @@ function draw_value(powermeter) {
     powermeter.context.fillRect(0, y, powermeter.canvas.width, h_sign * calc_y(powermeter))
 }
 
-function draw_line(powermeter) {
+function draw_mouse_line(powermeter) {
     if (!powermeter.mouse.line) return
 
     powermeter.context.beginPath()
