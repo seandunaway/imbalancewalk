@@ -70,7 +70,8 @@ function calc_y(powermeter) {
 
     let total = powermeter.max - powermeter.min
     let percent = (powermeter.value - powermeter.min) / total
-    let pixels = Math.round(powermeter.canvas.height * percent)
 
-    return pixels
+    return Math.round(powermeter.canvas.height * percent)
+}
+
 }
