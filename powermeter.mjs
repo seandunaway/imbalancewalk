@@ -47,7 +47,10 @@ export function init(powermeter) {
 export function draw(powermeter) {
     powermeter.context.fillStyle = powermeter.color.value
     powermeter.context.clearRect(0, 0, powermeter.canvas.width, powermeter.canvas.height)
-    powermeter.context.fillRect(0, powermeter.canvas.height, powermeter.canvas.width, -(powermeter.canvas.height / 2))
+
+    let y = powermeter.flip ? 0 : powermeter.canvas.height
+    let h_sign = powermeter.flip ? 1 : -1
+    powermeter.context.fillRect(0, y, powermeter.canvas.width, h_sign * (powermeter.canvas.height / 3))
 }
 
 function on_click(powermeter) {}
