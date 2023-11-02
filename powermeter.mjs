@@ -10,10 +10,12 @@ export function create(options) {
         min: 40,
         step: 1,
         value: 50,
-
         flip: false,
-        hover_line: true,
-        hover_label: true,
+
+        hover: {
+            line: true,
+            label: undefined,
+        },
 
         color: {
             background: '#ffd6d6',
