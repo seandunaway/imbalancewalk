@@ -33,6 +33,8 @@ export function create(options) {
         mouse: {
             line: true,
             label: undefined,
+            x: 0,
+            y: 0,
         },
 
         on_click: undefined,
