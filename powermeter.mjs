@@ -67,10 +67,8 @@ export function draw(powermeter) {
     let h_sign = powermeter.flip ? 1 : -1
 
     powermeter.context.fillStyle = powermeter.color.value
-    powermeter.context.fillRect(0, y, powermeter.canvas.width, h_sign * calc_pixels(powermeter))
-}
-
-function calc_pixels(powermeter) {
+    powermeter.context.fillRect(0, y, powermeter.canvas.width, h_sign * calc_y(powermeter))
+function calc_y(powermeter) {
     if (powermeter.value > powermeter.max) powermeter.value = powermeter.max
     if (powermeter.value < powermeter.min) powermeter.value = powermeter.min
 
