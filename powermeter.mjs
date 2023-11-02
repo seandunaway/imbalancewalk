@@ -36,7 +36,8 @@ function init(powermeter) {
     powermeter.canvas.height = powermeter.canvas.clientHeight * devicePixelRatio
     powermeter.canvas.width = powermeter.canvas.clientWidth * devicePixelRatio
     powermeter.canvas.style.backgroundColor = powermeter.color.background
-    powermeter.context.fillStyle = powermeter.color.value
+
+    powermeter.context.font = '50px monospace'
     powermeter.context.strokeStyle = powermeter.color.text_background
     powermeter.context.lineWidth = '0.5px'
     powermeter.context.setLineDash([20, 20])
@@ -56,11 +57,14 @@ export function draw(powermeter) {
     powermeter.context.clearRect(0, 0, powermeter.canvas.width, powermeter.canvas.height)
     draw_value(powermeter)
     draw_mouse_line(powermeter)
+    draw_mouse_label(powermeter)
 }
 
 function draw_value(powermeter) {
     let y = powermeter.flip ? 0 : powermeter.canvas.height
     let h_sign = powermeter.flip ? 1 : -1
+
+    powermeter.context.fillStyle = powermeter.color.value
     powermeter.context.fillRect(0, y, powermeter.canvas.width, h_sign * calc_y(powermeter))
 }
 
@@ -71,6 +75,20 @@ function draw_mouse_line(powermeter) {
     powermeter.context.moveTo(0, powermeter.mouse.y)
     powermeter.context.lineTo(powermeter.canvas.width, powermeter.mouse.y)
     powermeter.context.stroke()
+}
+
+function draw_mouse_label(powermeter) {
+    if (!powermeter.mouse.label) return
+
+    let h = 50
+    let w = 100
+    let x = powermeter.canvas.width - w
+    let y = powermeter.mouse.y - (h / 2)
+
+    powermeter.context.fillStyle = powermeter.color.text_background
+    powermeter.context.fillRect(x, y, w, h)
+    powermeter.context.fillStyle = powermeter.color.text
+    powermeter.context.fillText(Math.round(powermeter.mouse.y), x + 5, y + h - 5)
 }
 
 function calc_y(powermeter) {
