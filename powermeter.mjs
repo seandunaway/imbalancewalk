@@ -2,35 +2,25 @@ export function create(options) {
     let powermeter = {
         canvas: undefined,
         context: undefined,
-
         max: 60,
         min: 40,
         step: 1,
         value: 50,
         flip: false,
-
+        label: undefined,
         color: {
             background: '#ffd6d6',
             value: '#e4ffd9',
             text: 'white',
             text_background: '#44475a',
         },
-
-        label: {
-            text: undefined,
-            x: 0,
-            y: 0,
-        },
-
         mouse: {
             line: true,
-            label: undefined,
+            label: true,
             y: 0,
         },
-
         on_click: undefined,
         on_mouse: undefined,
-
         ...options
     }
 
