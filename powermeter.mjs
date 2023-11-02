@@ -45,16 +45,22 @@ function init(powermeter) {
 
 function events(powermeter) {
     addEventListener('mousedown', function (event) {
-        if (powermeter.on_click) powermeter.on_click()
+        let target = /** @type {HTMLCanvasElement} */ (event.target)
+        if (powermeter.canvas.id == target.id) powermeter.value = calc_value_from_pixels(powermeter)
+        if (powermeter.on_click) powermeter.on_click(powermeter, event)
     })
     addEventListener('mousemove', function (event) {
         powermeter.mouse.y = calc_mouse_y(powermeter, event)
-        if (powermeter.on_mouse) powermeter.on_mouse()
+        if (powermeter.on_mouse) powermeter.on_mouse(powermeter, event)
     })
 }
 
 export function draw(powermeter) {
+    if (powermeter.value > powermeter.max) powermeter.value = powermeter.max
+    if (powermeter.value < powermeter.min) powermeter.value = powermeter.min
+
     powermeter.context.clearRect(0, 0, powermeter.canvas.width, powermeter.canvas.height)
+
     draw_value(powermeter)
     draw_mouse_line(powermeter)
     draw_mouse_label(powermeter)
@@ -65,7 +71,7 @@ function draw_value(powermeter) {
     let h_sign = powermeter.flip ? 1 : -1
 
     powermeter.context.fillStyle = powermeter.color.value
-    powermeter.context.fillRect(0, y, powermeter.canvas.width, h_sign * calc_y(powermeter))
+    powermeter.context.fillRect(0, y, powermeter.canvas.width, h_sign * calc_pixels_from_value(powermeter))
 }
 
 function draw_mouse_line(powermeter) {
@@ -88,17 +94,23 @@ function draw_mouse_label(powermeter) {
     powermeter.context.fillStyle = powermeter.color.text_background
     powermeter.context.fillRect(x, y, w, h)
     powermeter.context.fillStyle = powermeter.color.text
-    powermeter.context.fillText(Math.round(powermeter.mouse.y), x + 5, y + h - 5)
+    powermeter.context.fillText(calc_value_from_pixels(powermeter), x + 5, y + h - 5)
 }
 
-function calc_y(powermeter) {
-    if (powermeter.value > powermeter.max) powermeter.value = powermeter.max
-    if (powermeter.value < powermeter.min) powermeter.value = powermeter.min
-
+function calc_pixels_from_value(powermeter) {
     let total = powermeter.max - powermeter.min
     let percent = (powermeter.value - powermeter.min) / total
 
-    return Math.round(powermeter.canvas.height * percent)
+    let pixels = powermeter.canvas.height * percent
+    return Math.round(pixels)
+}
+
+function calc_value_from_pixels(powermeter) {
+    let total = powermeter.max - powermeter.min
+    let percent = powermeter.mouse.y / powermeter.canvas.height
+
+    let value = powermeter.flip ? powermeter.min + (percent * total) : powermeter.max - (percent * total)
+    return Math.round(value)
 }
 
 function calc_mouse_y(powermeter, event) {
