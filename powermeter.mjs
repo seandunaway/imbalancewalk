@@ -25,7 +25,7 @@ export function create(options) {
         },
 
         on_click,
-        on_hover,
+        on_mouse,
 
         ...options
     }
@@ -67,4 +67,4 @@ function calc_pixels(powermeter) {
 }
 
 function on_click(powermeter) {}
-function on_hover(powermeter) {}
+function on_mouse(powermeter) {}
