@@ -3,19 +3,11 @@ export function create(options) {
         canvas: undefined,
         context: undefined,
 
-        label: undefined,
-        label_xy: [0, 0],
-
         max: 60,
         min: 40,
         step: 1,
         value: 50,
         flip: false,
-
-        hover: {
-            line: true,
-            label: undefined,
-        },
 
         color: {
             background: '#ffd6d6',
@@ -54,7 +46,17 @@ export function init(powermeter) {
     powermeter.canvas.height = powermeter.canvas.clientHeight * devicePixelRatio
     powermeter.canvas.width = powermeter.canvas.clientWidth * devicePixelRatio
     powermeter.canvas.style.backgroundColor = powermeter.color.background
-    powermeter.context.fillStyle = powermeter.color.value
+
+    addEventListener('mousedown', function (event) {
+        powermeter.mouse.x = event.offsetX
+        powermeter.mouse.y = event.offsetY
+        if (typeof powermeter.on_click == 'function') powermeter.on_click()
+    })
+    addEventListener('mousemove', function (event) {
+        powermeter.mouse.x = event.offsetX
+        powermeter.mouse.y = event.offsetY
+        if (typeof powermeter.on_mouse == 'function') powermeter.on_mouse()
+    })
 }
 
 export function draw(powermeter) {
@@ -78,6 +80,3 @@ function calc_pixels(powermeter) {
 
     return pixels
 }
-
-function on_click(powermeter) {}
-function on_mouse(powermeter) {}
