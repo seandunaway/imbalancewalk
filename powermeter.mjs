@@ -51,6 +51,9 @@ export function init(powermeter) {
         if (powermeter.on_click) powermeter.on_click()
     })
     addEventListener('mousemove', function (event) {
+        let {x, y} = calc_mouse(powermeter, event)
+        powermeter.mouse.x = x
+        powermeter.mouse.y = y
         if (powermeter.on_mouse) powermeter.on_mouse()
     })
 }
@@ -74,4 +77,10 @@ function calc_y(powermeter) {
     return Math.round(powermeter.canvas.height * percent)
 }
 
+function calc_mouse(powermeter, event) {
+    let rect = powermeter.canvas.getBoundingClientRect()
+    return {
+        x: (event.clientX - rect.left) / (rect.right - rect.left) * powermeter.canvas.width,
+        y: (event.clientY - rect.top) / (rect.bottom - rect.top) * powermeter.canvas.height
+    }
 }
