@@ -9,7 +9,7 @@
 }
 
 canvas {
-    border-bottom: 0.5px solid var(--black);
+    border: thin solid var(--black);
     height: 25%;
     width: 100%;
 }
