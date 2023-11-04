@@ -5,7 +5,6 @@ import keys from './keys.mjs'
 import params from './params.mjs'
 
 let q = quote.create()
-
 let rs = powermeter.create({canvas: elements.canvas.rs, label: 'rs↓', flip: true})
 let is = powermeter.create({canvas: elements.canvas.is, label: 'is↓', flip: true})
 let ib = powermeter.create({canvas: elements.canvas.ib, label: 'ib↑'})
