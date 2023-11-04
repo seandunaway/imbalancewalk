@@ -27,10 +27,10 @@ async function frame_quote() {
 
     elements.h1.textContent = q.value.toFixed(2)
     elements.p.innerHTML = `\
-        rs:<b>${rs.value}</b>%
-        is:<b>${is.value}</b>%
+        rb:<b>${rb.value}</b>%
         ib:<b>${ib.value}</b>%
-        rb:<b>${rb.value}</b>%`
+        is:<b>${is.value}</b>%
+        rs:<b>${rs.value}</b>%`
 
     await quote.delay(q)
     requestAnimationFrame(frame_quote)
