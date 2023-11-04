@@ -24,10 +24,6 @@ if (p.s) q.speed = parseInt(p.s)
 async function frame_quote() {
     if (!elements.h1 || !elements.p) return
 
-    q.rs = rs.value
-    q.is = is.value
-    q.ib = ib.value
-    q.rb = rb.value
     quote.update(q)
 
     elements.h1.textContent = q.value.toFixed(2)
@@ -44,6 +40,10 @@ async function frame_quote() {
 }
 
 function frame_powermeter() {
+    q.rs = rs.value
+    q.is = is.value
+    q.ib = ib.value
+    q.rb = rb.value
     powermeter.draw(rs)
     powermeter.draw(is)
     powermeter.draw(ib)
