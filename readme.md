@@ -3,11 +3,6 @@
 it's all here
 
 
-## video
-
-https://youtu.be/xN2OLu0TClc
-
-
 ## shortcuts
 
 ### buyers and sellers
