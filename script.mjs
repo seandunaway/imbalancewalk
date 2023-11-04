@@ -11,7 +11,7 @@ let is = powermeter.create({canvas: elements.canvas.is, label: 'is↓', flip: tr
 let ib = powermeter.create({canvas: elements.canvas.ib, label: 'ib↑'})
 let rb = powermeter.create({canvas: elements.canvas.rb, label: 'rb↑'})
 
-keys({rs, is, ib, rb, q})
+keys({q, rs, is, ib, rb})
 
 let p = params(['rs', 'is', 'ib', 'rb', 's'])
 if (p.rs) rs.value = parseInt(p.rs)
