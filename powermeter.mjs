@@ -1,5 +1,5 @@
 export function create(options) {
-    let powermeter = {
+    let p = {
         canvas: undefined,
         context: undefined,
         max: 75,
@@ -24,119 +24,119 @@ export function create(options) {
         ...options
     }
 
-    init(powermeter)
-    events(powermeter)
-    return powermeter
+    init(p)
+    events(p)
+    return p
 }
 
-function init(powermeter) {
-    if (!powermeter.canvas) throw new Error('canvas')
-    if (!powermeter.context) powermeter.context = powermeter.canvas.getContext('2d')
+function init(p) {
+    if (!p.canvas) throw new Error('canvas')
+    if (!p.context) p.context = p.canvas.getContext('2d')
 
-    powermeter.canvas.height = powermeter.canvas.clientHeight * devicePixelRatio
-    powermeter.canvas.width = powermeter.canvas.clientWidth * devicePixelRatio
-    powermeter.canvas.style.backgroundColor = powermeter.color.background
+    p.canvas.height = p.canvas.clientHeight * devicePixelRatio
+    p.canvas.width = p.canvas.clientWidth * devicePixelRatio
+    p.canvas.style.backgroundColor = p.color.background
 
-    powermeter.context.font = '48px monospace'
-    powermeter.context.strokeStyle = powermeter.color.text_background
-    powermeter.context.lineWidth = '0.5px'
-    powermeter.context.setLineDash([20, 20])
-    powermeter.context.textBaseline = 'top'
+    p.context.font = '48px monospace'
+    p.context.strokeStyle = p.color.text_background
+    p.context.lineWidth = '0.5px'
+    p.context.setLineDash([20, 20])
+    p.context.textBaseline = 'top'
 }
 
-function events(powermeter) {
-    let mouse_y_default = powermeter.mouse.y
+function events(p) {
+    let mouse_y_default = p.mouse.y
     addEventListener('mouseout', function (event) {
-        powermeter.mouse.y = mouse_y_default
+        p.mouse.y = mouse_y_default
     })
     addEventListener('mousemove', function (event) {
-        if (powermeter.on_mouse) powermeter.on_mouse(powermeter, event)
-        powermeter.mouse.y = calc_mouse_y(powermeter, event)
+        if (p.on_mouse) p.on_mouse(p, event)
+        p.mouse.y = calc_mouse_y(p, event)
     })
     addEventListener('mousedown', function (event) {
-        if (powermeter.on_click) powermeter.on_click(powermeter, event)
-        if (!powermeter.mouse.set_value) return
+        if (p.on_click) p.on_click(p, event)
+        if (!p.mouse.set_value) return
 
         let target = /** @type {HTMLCanvasElement} */ (event.target)
-        if (powermeter.canvas.id == target.id) powermeter.value = calc_value_from_pixels(powermeter)
+        if (p.canvas.id == target.id) p.value = calc_value_from_pixels(p)
     })
 }
 
-export function draw(powermeter) {
-    if (powermeter.value > powermeter.max) powermeter.value = powermeter.max
-    if (powermeter.value < powermeter.min) powermeter.value = powermeter.min
+export function draw(p) {
+    if (p.value > p.max) p.value = p.max
+    if (p.value < p.min) p.value = p.min
 
-    powermeter.context.clearRect(0, 0, powermeter.canvas.width, powermeter.canvas.height)
+    p.context.clearRect(0, 0, p.canvas.width, p.canvas.height)
 
-    draw_value(powermeter)
-    draw_mouse_line(powermeter)
-    draw_mouse_label(powermeter)
-    draw_label(powermeter)
+    draw_value(p)
+    draw_mouse_line(p)
+    draw_mouse_label(p)
+    draw_label(p)
 }
 
-function draw_value(powermeter) {
-    let y = powermeter.flip ? 0 : powermeter.canvas.height
-    let h_sign = powermeter.flip ? 1 : -1
+function draw_value(p) {
+    let y = p.flip ? 0 : p.canvas.height
+    let h_sign = p.flip ? 1 : -1
 
-    powermeter.context.fillStyle = powermeter.color.value
-    powermeter.context.fillRect(0, y, powermeter.canvas.width, h_sign * calc_pixels_from_value(powermeter))
+    p.context.fillStyle = p.color.value
+    p.context.fillRect(0, y, p.canvas.width, h_sign * calc_pixels_from_value(p))
 }
 
-function draw_label(powermeter) {
-    if (!powermeter.label) return
+function draw_label(p) {
+    if (!p.label) return
 
-    let h = parseInt(powermeter.context.font.match(/\d+/)[0])
-    let w = powermeter.context.measureText(powermeter.label).width
+    let h = parseInt(p.context.font.match(/\d+/)[0])
+    let w = p.context.measureText(p.label).width
     let x = 0
-    let y = powermeter.flip ? 0 : powermeter.canvas.height - h
+    let y = p.flip ? 0 : p.canvas.height - h
 
-    powermeter.context.fillStyle = powermeter.color.text_background
-    powermeter.context.fillRect(x, y, w, h)
-    powermeter.context.fillStyle = powermeter.color.text
-    powermeter.context.fillText(powermeter.label, x, y + 5)
+    p.context.fillStyle = p.color.text_background
+    p.context.fillRect(x, y, w, h)
+    p.context.fillStyle = p.color.text
+    p.context.fillText(p.label, x, y + 5)
 }
 
-function draw_mouse_line(powermeter) {
-    if (!powermeter.mouse.line) return
+function draw_mouse_line(p) {
+    if (!p.mouse.line) return
 
-    powermeter.context.beginPath()
-    powermeter.context.moveTo(0, powermeter.mouse.y)
-    powermeter.context.lineTo(powermeter.canvas.width, powermeter.mouse.y)
-    powermeter.context.stroke()
+    p.context.beginPath()
+    p.context.moveTo(0, p.mouse.y)
+    p.context.lineTo(p.canvas.width, p.mouse.y)
+    p.context.stroke()
 }
 
-function draw_mouse_label(powermeter) {
-    if (!powermeter.mouse.label) return
+function draw_mouse_label(p) {
+    if (!p.mouse.label) return
 
-    let value = calc_value_from_pixels(powermeter)
-    let h = parseInt(powermeter.context.font.match(/\d+/)[0])
-    let w = powermeter.context.measureText(value).width
-    let x = powermeter.canvas.width - w
-    let y = powermeter.mouse.y - (h / 2)
+    let value = calc_value_from_pixels(p)
+    let h = parseInt(p.context.font.match(/\d+/)[0])
+    let w = p.context.measureText(value).width
+    let x = p.canvas.width - w
+    let y = p.mouse.y - (h / 2)
 
-    powermeter.context.fillStyle = powermeter.color.text_background
-    powermeter.context.fillRect(x, y, w, h)
-    powermeter.context.fillStyle = powermeter.color.text
-    powermeter.context.fillText(value, x, y + 5)
+    p.context.fillStyle = p.color.text_background
+    p.context.fillRect(x, y, w, h)
+    p.context.fillStyle = p.color.text
+    p.context.fillText(value, x, y + 5)
 }
 
-function calc_pixels_from_value(powermeter) {
-    let total = powermeter.max - powermeter.min
-    let percent = (powermeter.value - powermeter.min) / total
+function calc_pixels_from_value(p) {
+    let total = p.max - p.min
+    let percent = (p.value - p.min) / total
 
-    let pixels = powermeter.canvas.height * percent
+    let pixels = p.canvas.height * percent
     return Math.round(pixels)
 }
 
-function calc_value_from_pixels(powermeter) {
-    let total = powermeter.max - powermeter.min
-    let percent = powermeter.mouse.y / powermeter.canvas.height
+function calc_value_from_pixels(p) {
+    let total = p.max - p.min
+    let percent = p.mouse.y / p.canvas.height
 
-    let value = powermeter.flip ? powermeter.min + (percent * total) : powermeter.max - (percent * total)
+    let value = p.flip ? p.min + (percent * total) : p.max - (percent * total)
     return Math.round(value)
 }
 
-function calc_mouse_y(powermeter, event) {
-    let rect = powermeter.canvas.getBoundingClientRect()
-    return (event.clientY - rect.top) / (rect.bottom - rect.top) * powermeter.canvas.height
+function calc_mouse_y(p, event) {
+    let rect = p.canvas.getBoundingClientRect()
+    return (event.clientY - rect.top) / (rect.bottom - rect.top) * p.canvas.height
 }

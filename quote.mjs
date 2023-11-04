@@ -1,5 +1,5 @@
 export function create(options) {
-    let quote = {
+    let q = {
         value: 5000.00,
         delay: 100,
         tick: 0.25,
@@ -9,25 +9,25 @@ export function create(options) {
         rb: 50,
         ...options,
     }
-    return quote
+    return q
 }
 
-export function update(quote) {
+export function update(q) {
     // is there a lift by an initiative buyer?
-    if (coinflip(quote.ib))
+    if (coinflip(q.ib))
         // is it not held by a responsive seller?
-        if (!coinflip(quote.rs))
-            quote.value += quote.tick
+        if (!coinflip(q.rs))
+            q.value += q.tick
 
     // is there a hit by an initiative seller?
-    if (coinflip(quote.is))
+    if (coinflip(q.is))
         // is it not held by a responsive buyer?
-        if (!coinflip(quote.rb))
-            quote.value -= quote.tick
+        if (!coinflip(q.rb))
+            q.value -= q.tick
 }
 
-export async function delay(quote) {
-    await new Promise(resolve => setTimeout(resolve, quote.delay))
+export async function delay(q) {
+    await new Promise(resolve => setTimeout(resolve, q.delay))
 }
 
 export function coinflip(probability = 50) {
