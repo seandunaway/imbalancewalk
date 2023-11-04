@@ -32,7 +32,7 @@ export default function(objects) {
                     `ib=${objects.ib.value}&` +
                     `is=${objects.is.value}&` +
                     `rs=${objects.rs.value}&` +
-                    `speed=${objects.q.speed}&`
+                    `speed=${objects.q.speed}`
                 )
                 break
         }
