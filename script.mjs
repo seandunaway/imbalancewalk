@@ -1,6 +1,7 @@
 import * as elements from './elements.mjs'
 import * as powermeter from './powermeter.mjs'
 import * as quote from './quote.mjs'
+import * as templates from './templates.mjs'
 import keys from './keys.mjs'
 import params from './params.mjs'
 
@@ -19,13 +20,8 @@ async function frame_quote() {
 
     quote.update(q)
     elements.h1.textContent = q.value.toFixed(2)
-    elements.p.innerHTML = `
-        rb:<b>${rb.value}</b>%
-        ib:<b>${ib.value}</b>%
-        is:<b>${is.value}</b>%
-        rs:<b>${rs.value}</b>%
-        s:<b>${q.speed}</b>x
-    `
+    elements.p.innerHTML = templates.p(objects)
+
     await quote.delay(q)
     requestAnimationFrame(frame_quote)
 }
