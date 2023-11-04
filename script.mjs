@@ -13,12 +13,12 @@ let rb = powermeter.create({canvas: elements.canvas.rb, label: 'rb↑'})
 
 keys({rs, is, ib, rb, q})
 
-let p = params(['rs', 'is', 'ib', 'rb', 'speed'])
+let p = params(['rs', 'is', 'ib', 'rb', 's'])
 if (p.rs) rs.value = parseInt(p.rs)
 if (p.is) is.value = parseInt(p.is)
 if (p.ib) ib.value = parseInt(p.ib)
 if (p.rb) rb.value = parseInt(p.rb)
-if (p.speed) q.speed = parseInt(p.speed)
+if (p.s) q.speed = parseInt(p.s)
 
 async function frame_quote() {
     if (!elements.h1 || !elements.p) return
@@ -35,7 +35,7 @@ async function frame_quote() {
         ib:<b>${ib.value}</b>%
         is:<b>${is.value}</b>%
         rs:<b>${rs.value}</b>%
-        speed:<b>${q.speed}x
+        s:<b>${q.speed}x
     `
 
     await quote.delay(q)
