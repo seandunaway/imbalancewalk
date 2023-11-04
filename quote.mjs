@@ -1,8 +1,9 @@
 export function create(options) {
     let q = {
         value: 5000.00,
-        delay: 200,
         tick: 0.25,
+        delay: 100,
+        speed: 1,
         rs: 50,
         is: 50,
         ib: 50,
@@ -27,7 +28,7 @@ export function update(q) {
 }
 
 export async function delay(q) {
-    await new Promise(resolve => setTimeout(resolve, rand(20, q.delay)))
+    await new Promise(resolve => setTimeout(resolve, rand(20, q.delay) / q.speed))
 }
 
 export function coinflip(probability = 50) {

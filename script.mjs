@@ -10,11 +10,12 @@ let is = powermeter.create({canvas: elements.canvas.is, label: 'is↓', flip: tr
 let ib = powermeter.create({canvas: elements.canvas.ib, label: 'ib↑'})
 let rb = powermeter.create({canvas: elements.canvas.rb, label: 'rb↑'})
 
-let p = params(['rs', 'is', 'ib', 'rb'])
+let p = params(['rs', 'is', 'ib', 'rb', 'speed'])
 if (p.rs) rs.value = parseInt(p.rs)
 if (p.is) is.value = parseInt(p.is)
 if (p.ib) ib.value = parseInt(p.ib)
 if (p.rb) rb.value = parseInt(p.rb)
+if (p.speed) q.speed = parseInt(p.speed)
 
 async function frame_quote() {
     if (!elements.h1 || !elements.p) return
