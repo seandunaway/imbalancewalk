@@ -29,7 +29,7 @@ async function frame_quote() {
     requestAnimationFrame(frame_quote)
 }
 
-async function frame_powermeter() {
+function frame_powermeter() {
     powermeter.draw(rs)
     powermeter.draw(is)
     powermeter.draw(ib)
