@@ -1,8 +1,5 @@
 # imbalancewalk
 
-it's all here
-
-
 ## shortcuts
 
 ### buyers and sellers
