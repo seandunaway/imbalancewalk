@@ -37,7 +37,7 @@ function init(powermeter) {
     powermeter.canvas.width = powermeter.canvas.clientWidth * devicePixelRatio
     powermeter.canvas.style.backgroundColor = powermeter.color.background
 
-    powermeter.context.font = '50px monospace'
+    powermeter.context.font = '48px monospace'
     powermeter.context.strokeStyle = powermeter.color.text_background
     powermeter.context.lineWidth = '0.5px'
     powermeter.context.setLineDash([20, 20])
