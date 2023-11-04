@@ -30,7 +30,7 @@ async function frame_quote() {
         rs:<b>${rs.value}</b>%
         is:<b>${is.value}</b>%
         ib:<b>${ib.value}</b>%
-        rb:<b>${ib.value}</b>%`
+        rb:<b>${rb.value}</b>%`
 
     await quote.delay(q)
     requestAnimationFrame(frame_quote)
