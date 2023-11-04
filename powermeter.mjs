@@ -41,6 +41,7 @@ function init(powermeter) {
     powermeter.context.strokeStyle = powermeter.color.text_background
     powermeter.context.lineWidth = '0.5px'
     powermeter.context.setLineDash([20, 20])
+    powermeter.context.textBaseline = 'top'
 }
 
 function events(powermeter) {
@@ -70,6 +71,7 @@ export function draw(powermeter) {
     draw_value(powermeter)
     draw_mouse_line(powermeter)
     draw_mouse_label(powermeter)
+    draw_label(powermeter)
 }
 
 function draw_value(powermeter) {
@@ -78,6 +80,20 @@ function draw_value(powermeter) {
 
     powermeter.context.fillStyle = powermeter.color.value
     powermeter.context.fillRect(0, y, powermeter.canvas.width, h_sign * calc_pixels_from_value(powermeter))
+}
+
+function draw_label(powermeter) {
+    if (!powermeter.label) return
+
+    let h = parseInt(powermeter.context.font.match(/\d+/)[0])
+    let w = powermeter.context.measureText(powermeter.label).width
+    let x = 0
+    let y = powermeter.flip ? 0 : powermeter.canvas.height - h
+
+    powermeter.context.fillStyle = powermeter.color.text_background
+    powermeter.context.fillRect(x, y, w, h)
+    powermeter.context.fillStyle = powermeter.color.text
+    powermeter.context.fillText(powermeter.label, x, y + 5)
 }
 
 function draw_mouse_line(powermeter) {
@@ -92,15 +108,16 @@ function draw_mouse_line(powermeter) {
 function draw_mouse_label(powermeter) {
     if (!powermeter.mouse.label) return
 
-    let h = 50
-    let w = 100
+    let value = calc_value_from_pixels(powermeter)
+    let h = parseInt(powermeter.context.font.match(/\d+/)[0])
+    let w = powermeter.context.measureText(value).width
     let x = powermeter.canvas.width - w
     let y = powermeter.mouse.y - (h / 2)
 
     powermeter.context.fillStyle = powermeter.color.text_background
     powermeter.context.fillRect(x, y, w, h)
     powermeter.context.fillStyle = powermeter.color.text
-    powermeter.context.fillText(calc_value_from_pixels(powermeter), x + 5, y + h - 5)
+    powermeter.context.fillText(value, x, y + 5)
 }
 
 function calc_pixels_from_value(powermeter) {
