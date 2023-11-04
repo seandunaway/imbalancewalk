@@ -5,20 +5,13 @@ export default function(objects) {
     for (let key in objects) {
         let param = search.get(key)
         if (param == null) continue
-
-        let value = parseInt(param) ? parseInt(param) : param
-
-        if (objects[key]?.value != undefined)
-            objects[key].value = value
-        else {
-            let nested_keys = objects[key].split('.')
-            let nested_value = objects
-            for (let nested_key of nested_keys) {
-                if (typeof nested_value[nested_key] == 'object')
-                    nested_value = nested_value[nested_key]
-                else
-                    nested_value[nested_key] = value
-            }
-        }
+        params[key] = param
     }
+
+    if (params.q) objects.q.value = parseInt(params.q)
+    if (params.rs) objects.rs.value = parseInt(params.rs)
+    if (params.is) objects.is.value = parseInt(params.is)
+    if (params.ib) objects.ib.value = parseInt(params.ib)
+    if (params.rb) objects.rb.value = parseInt(params.rb)
+    if (params.s) objects.q.speed = parseInt(params.s)
 }
