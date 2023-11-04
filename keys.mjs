@@ -24,7 +24,7 @@ export default function(objects) {
                 else objects.q.speed /= 2
                 break
 
-            case 'Enter':
+            case 'Escape':
                 objects.rb.value = 50
                 objects.ib.value = 50
                 objects.is.value = 50
