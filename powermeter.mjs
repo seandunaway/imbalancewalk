@@ -2,8 +2,8 @@ export function create(options) {
     let p = {
         canvas: undefined,
         context: undefined,
-        max: 75,
-        min: 25,
+        max: 90,
+        min: 10,
         value: 50,
         flip: false,
         label: undefined,
@@ -53,7 +53,7 @@ function events(p) {
         if (p.on_mouse) p.on_mouse(p, event)
         p.mouse.y = calc_mouse_y(p, event)
     })
-    addEventListener('mousedown', function (event) {
+    addEventListener('click', function (event) {
         if (p.on_click) p.on_click(p, event)
         if (!p.mouse.set_value) return
 
