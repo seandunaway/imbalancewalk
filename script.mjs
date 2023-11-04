@@ -25,7 +25,6 @@ async function frame_quote() {
     if (!elements.h1 || !elements.p) return
 
     quote.update(q)
-
     elements.h1.textContent = q.value.toFixed(2)
     elements.p.innerHTML = `
         rb:<b>${rb.value}</b>%
@@ -34,7 +33,6 @@ async function frame_quote() {
         rs:<b>${rs.value}</b>%
         s:<b>${q.speed}</b>x
     `
-
     await quote.delay(q)
     requestAnimationFrame(frame_quote)
 }
@@ -48,7 +46,6 @@ function frame_powermeter() {
     powermeter.draw(is)
     powermeter.draw(ib)
     powermeter.draw(rb)
-
     requestAnimationFrame(frame_powermeter)
 }
 
