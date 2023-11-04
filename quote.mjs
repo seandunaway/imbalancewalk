@@ -9,7 +9,6 @@ export function create(options) {
         rb: 50,
         ...options,
     }
-
     return quote
 }
 
