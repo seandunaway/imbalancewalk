@@ -2,8 +2,8 @@ export function create(options) {
     let powermeter = {
         canvas: undefined,
         context: undefined,
-        max: 60,
-        min: 40,
+        max: 75,
+        min: 25,
         value: 50,
         flip: false,
         label: undefined,
