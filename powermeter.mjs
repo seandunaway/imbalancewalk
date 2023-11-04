@@ -14,9 +14,9 @@ export function create(options) {
             text_background: '#44475a',
         },
         mouse: {
-            line: true,
-            label: true,
-            set_value: true,
+            line: false,
+            label: false,
+            set_value: false,
             y: -100,
         },
         on_mouse: undefined,
@@ -45,6 +45,8 @@ function init(p) {
 }
 
 function events(p) {
+    if (!p.mouse.line && !p.mouse.label && !p.mouse.set_value) return
+
     let mouse_y_default = p.mouse.y
     addEventListener('mouseout', function (event) {
         p.mouse.y = mouse_y_default
