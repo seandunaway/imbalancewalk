@@ -4,13 +4,10 @@ export default function(objects) {
         switch (event.code) {
             case 'KeyQ': objects.rb.value += i; break
             case 'KeyA': objects.rb.value -= i; break
-
             case 'KeyW': objects.ib.value += i; break
             case 'KeyS': objects.ib.value -= i; break
-
             case 'KeyE': objects.is.value -= i; break
             case 'KeyD': objects.is.value += i; break
-
             case 'KeyR': objects.rs.value -= i; break
             case 'KeyF': objects.rs.value += i; break
 
