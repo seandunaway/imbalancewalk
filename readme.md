@@ -12,41 +12,41 @@ https://youtu.be/xN2OLu0TClc
 
 ### buyers and sellers
 ```
-q | a : rb +/- 5
+Q|A: rb +/- 5
 
-w | s : ib +/- 5
+W|S: ib +/- 5
 
-e | d : is +/- 5
+E|D: is +/- 5
 
-r | f : rs +/- 5
+R|F: rs +/- 5
 
-shift modifier for +/- 1
+SHIFT modifier: +/- 1
 ```
 
 ### speed
 ```
-t | up arrow : speed +
+T|⬆: speed +
 
-t | down arrow : speed -
+G|⬇: speed -
 
-p : pause
+P: pause
 ```
 
 ### presets
 ```
-0 : set all to 50
+0: set all to 50
 
-- : set all to 0
+-: set all to 0
 
-= : set all to 100
+=: set all to 100
 
-space : reset quote
+SPACE: reset quote
 
-esc : reset everything
+ESC: reset everything
 ```
 
 ### sharing
 ```
-c : copy to clipboard
+C: copy to clipboard
 ```
 
