@@ -8,8 +8,13 @@
     margin: 0;
 }
 
+body {
+    height: 100vh;
+}
+
 canvas {
     border: thin solid var(--black);
+    display: block;
     height: 25%;
     width: 100%;
 }
