@@ -1,6 +1,7 @@
 import * as elements from './elements.mjs'
 import * as powermeter from './powermeter.mjs'
 import * as quote from './quote.mjs'
+import params from './params.mjs'
 
 let q = quote.create()
 
@@ -8,6 +9,12 @@ let rs = powermeter.create({canvas: elements.canvas.rs, label: 'rs↓', flip: tr
 let is = powermeter.create({canvas: elements.canvas.is, label: 'is↓', flip: true})
 let ib = powermeter.create({canvas: elements.canvas.ib, label: 'ib↑'})
 let rb = powermeter.create({canvas: elements.canvas.rb, label: 'rb↑'})
+
+let p = params(['rs', 'is', 'ib', 'rb'])
+if (p.rs) rs.value = parseInt(p.rs)
+if (p.is) is.value = parseInt(p.is)
+if (p.ib) ib.value = parseInt(p.ib)
+if (p.rb) rb.value = parseInt(p.rb)
 
 async function frame_quote() {
     if (!elements.h1 || !elements.p) return
