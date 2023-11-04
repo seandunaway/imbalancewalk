@@ -33,11 +33,11 @@ function init(p) {
     if (!p.canvas) throw new Error('canvas')
     if (!p.context) p.context = p.canvas.getContext('2d')
 
-    p.canvas.height = p.canvas.clientHeight
-    p.canvas.width = p.canvas.clientWidth
+    p.canvas.height = p.canvas.clientHeight * devicePixelRatio
+    p.canvas.width = p.canvas.clientWidth * devicePixelRatio
     p.canvas.style.backgroundColor = p.color.background
 
-    p.context.font = '24px monospace'
+    p.context.font = '48px monospace'
     p.context.strokeStyle = p.color.text_background
     p.context.lineWidth = '0.5px'
     p.context.setLineDash([20, 20])
