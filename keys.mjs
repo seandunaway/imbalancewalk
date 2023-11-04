@@ -17,12 +17,18 @@ export default function(objects) {
             case 'ArrowUp': objects.q.speed++; break
             case 'ArrowDown': if (objects.q.speed >= 1) objects.q.speed--; break
 
-            case 'Escape':
+            case 'Digit0':
                 objects.rb.value = 50
                 objects.ib.value = 50
                 objects.is.value = 50
                 objects.rs.value = 50
-                objects.q.speed = 1
+                break
+            case 'Space':
+                objects.q.value = 5000.00
+                break
+            case 'Escape':
+                dispatchEvent(new KeyboardEvent('keydown', {code: 'Digit0'}))
+                dispatchEvent(new KeyboardEvent('keydown', {code: 'Space'}))
                 break
 
             case 'KeyC':
