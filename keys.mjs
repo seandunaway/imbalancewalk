@@ -78,6 +78,10 @@ export default function(objects) {
                     `s=${objects.q.speed}`
                 )
                 break
+
+            case 'Slash':
+                document.querySelector('a')?.click()
+                break
         }
     })
 }

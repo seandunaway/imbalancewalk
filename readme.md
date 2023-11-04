@@ -50,3 +50,7 @@ ESC: reset everything
 C: copy to clipboard
 ```
 
+### help
+```
+?: readme
+```
