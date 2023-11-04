@@ -35,7 +35,7 @@ async function frame_quote() {
         ib:<b>${ib.value}</b>%
         is:<b>${is.value}</b>%
         rs:<b>${rs.value}</b>%
-        s:<b>${q.speed}x
+        s:<b>${q.speed}</b>x
     `
 
     await quote.delay(q)
