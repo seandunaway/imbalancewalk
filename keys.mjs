@@ -1,3 +1,5 @@
+let last_speed
+
 export default function(objects) {
     addEventListener('keydown', function (event) {
         let i = event.shiftKey ? 1 : 5
@@ -11,8 +13,28 @@ export default function(objects) {
             case 'KeyR': objects.rs.value -= i; break
             case 'KeyF': objects.rs.value += i; break
 
-            case 'KeyT': case 'ArrowUp': objects.q.speed++; break
-            case 'KeyG': case 'ArrowDown': if (objects.q.speed >= 1) objects.q.speed--; break
+            case 'KeyT':
+            case 'ArrowUp':
+                if (objects.q.speed >= 1) objects.q.speed++
+                else if (objects.q.speed == 0) objects.q.speed = 1
+                else objects.q.speed *= 2
+                break
+
+            case 'KeyG':
+            case 'ArrowDown':
+                if (objects.q.speed >= 1) objects.q.speed--
+                else if (objects.q.speed == 0) objects.q.speed = 0.50
+                else objects.q.speed /= 2
+                break
+
+            case 'KeyP':
+                if (!objects.q.speed)
+                    objects.q.speed = last_speed ? last_speed : 1
+                else {
+                    last_speed = objects.q.speed
+                    objects.q.speed = 0
+                }
+                break
 
             case 'Minus':
                 objects.rb.value = 0
