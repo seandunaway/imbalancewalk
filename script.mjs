@@ -1,6 +1,7 @@
 import * as elements from './elements.mjs'
 import * as powermeter from './powermeter.mjs'
 import * as quote from './quote.mjs'
+import keys from './keys.mjs'
 import params from './params.mjs'
 
 let q = quote.create()
@@ -9,6 +10,8 @@ let rs = powermeter.create({canvas: elements.canvas.rs, label: 'rs↓', flip: tr
 let is = powermeter.create({canvas: elements.canvas.is, label: 'is↓', flip: true})
 let ib = powermeter.create({canvas: elements.canvas.ib, label: 'ib↑'})
 let rb = powermeter.create({canvas: elements.canvas.rb, label: 'rb↑'})
+
+keys({rs, is, ib, rb, q})
 
 let p = params(['rs', 'is', 'ib', 'rb', 'speed'])
 if (p.rs) rs.value = parseInt(p.rs)
@@ -31,7 +34,8 @@ async function frame_quote() {
         rb:<b>${rb.value}</b>%
         ib:<b>${ib.value}</b>%
         is:<b>${is.value}</b>%
-        rs:<b>${rs.value}</b>%`
+        rs:<b>${rs.value}</b>%
+        speed:<b>${q.speed}x`
 
     await quote.delay(q)
     requestAnimationFrame(frame_quote)
