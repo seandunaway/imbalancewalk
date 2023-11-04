@@ -13,7 +13,8 @@ let rb = powermeter.create({canvas: elements.canvas.rb, label: 'rb↑'})
 
 keys({q, rs, is, ib, rb})
 
-let p = params(['rs', 'is', 'ib', 'rb', 's'])
+let p = params(['q', 'rs', 'is', 'ib', 'rb', 's'])
+if (p.q) q.value = parseInt(p.q)
 if (p.rs) rs.value = parseInt(p.rs)
 if (p.is) is.value = parseInt(p.is)
 if (p.ib) ib.value = parseInt(p.ib)
