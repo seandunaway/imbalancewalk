@@ -14,15 +14,8 @@ export default function(objects) {
             case 'KeyR': objects.rs.value -= i; break
             case 'KeyF': objects.rs.value += i; break
 
-            case 'ArrowUp':
-                if (objects.q.speed >= 1) objects.q.speed++
-                else objects.q.speed *= 2
-                break
-            case 'ArrowDown':
-                if (objects.q.speed >= 1) objects.q.speed--
-                else if (objects.q.speed == 0) objects.q.speed = 0.50
-                else objects.q.speed /= 2
-                break
+            case 'ArrowUp': objects.q.speed++; break
+            case 'ArrowDown': if (objects.q.speed >= 1) objects.q.speed--; break
 
             case 'Escape':
                 objects.rb.value = 50
