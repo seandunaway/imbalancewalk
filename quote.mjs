@@ -14,12 +14,24 @@ export function create(options) {
 }
 
 export function update(q) {
+    if (coinflip()) {
+        buy(q)
+        sell(q)
+    } else {
+        sell(q)
+        buy(q)
+    }
+}
+
+function buy(q) {
     // is there a lift by an initiative buyer?
     if (coinflip(q.ib))
         // is it not held by a responsive seller?
         if (!coinflip(q.rs))
             q.value += q.tick
+}
 
+function sell(q) {
     // is there a hit by an initiative seller?
     if (coinflip(q.is))
         // is it not held by a responsive buyer?
