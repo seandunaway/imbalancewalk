@@ -14,6 +14,8 @@ export function create(options) {
 }
 
 export function update(q) {
+    if (q.speed == 0) return
+
     if (coinflip()) {
         buy(q)
         sell(q)

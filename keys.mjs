@@ -19,7 +19,8 @@ export default function(objects) {
                 else objects.q.speed *= 2
                 break
             case 'ArrowDown':
-                if (objects.q.speed >= 2) objects.q.speed--
+                if (objects.q.speed >= 1) objects.q.speed--
+                else if (objects.q.speed == 0) objects.q.speed = 0.50
                 else objects.q.speed /= 2
                 break
 
