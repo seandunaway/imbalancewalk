@@ -3,6 +3,7 @@ let last_speed
 export default function(objects) {
     addEventListener('keydown', function (event) {
         let i = event.shiftKey ? 1 : 5
+
         switch (event.code) {
             case 'KeyQ': objects.rb.value += i; break
             case 'KeyA': objects.rb.value -= i; break
