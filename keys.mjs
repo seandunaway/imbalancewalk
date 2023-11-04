@@ -31,6 +31,17 @@ export default function(objects) {
                 objects.rs.value = 50
                 objects.q.speed = 1
                 break
+
+            case 'KeyC':
+                this.navigator.clipboard.writeText(
+                    `${window.location.href}?` +
+                    `rb=${objects.rb.value}&` +
+                    `ib=${objects.ib.value}&` +
+                    `is=${objects.is.value}&` +
+                    `rs=${objects.rs.value}&` +
+                    `speed=${objects.q.speed}&`
+                )
+                break
         }
     })
 }
