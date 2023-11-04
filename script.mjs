@@ -11,15 +11,9 @@ let is = powermeter.create({canvas: elements.canvas.is, label: 'is↓', flip: tr
 let ib = powermeter.create({canvas: elements.canvas.ib, label: 'ib↑'})
 let rb = powermeter.create({canvas: elements.canvas.rb, label: 'rb↑'})
 
-keys({q, rs, is, ib, rb})
-
-let p = params(['q', 'rs', 'is', 'ib', 'rb', 's'])
-if (p.q) q.value = parseInt(p.q)
-if (p.rs) rs.value = parseInt(p.rs)
-if (p.is) is.value = parseInt(p.is)
-if (p.ib) ib.value = parseInt(p.ib)
-if (p.rb) rb.value = parseInt(p.rb)
-if (p.s) q.speed = parseInt(p.s)
+let objects = {q, rs, is, ib, rb, s: 'q.speed'}
+keys(objects)
+params(objects)
 
 async function frame_quote() {
     if (!elements.h1 || !elements.p) return
