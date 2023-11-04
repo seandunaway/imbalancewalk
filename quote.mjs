@@ -2,7 +2,7 @@ export function create(options) {
     let q = {
         value: 5000.00,
         tick: 0.25,
-        delay: 100,
+        delay: 200,
         speed: 1,
         rs: 50,
         is: 50,
