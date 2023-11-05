@@ -1,11 +1,8 @@
 export default function(objects) {
     let search = new URLSearchParams(window.location.search)
-
     let params = {}
-    for (let key in objects) {
-        let param = search.get(key)
-        if (param == null) continue
-        params[key] = param
+    for (let [key, value] of search) {
+        params[key] = value
     }
 
     if (params.q) objects.q.value = parseInt(params.q)
@@ -13,6 +10,9 @@ export default function(objects) {
     if (params.is) objects.is.value = parseInt(params.is)
     if (params.ib) objects.ib.value = parseInt(params.ib)
     if (params.rb) objects.rb.value = parseInt(params.rb)
+
     if (params.s) objects.q.speed = parseFloat(params.s)
     if (params.h) dispatchEvent(new KeyboardEvent('keydown', {code: 'KeyH'}))
+
+    return params
 }
