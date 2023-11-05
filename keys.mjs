@@ -1,3 +1,5 @@
+import * as elements from './elements.mjs'
+
 export default function(objects) {
     let speed
 
@@ -69,15 +71,14 @@ export default function(objects) {
                 break
 
             case 'KeyH':
-                let p = document.querySelector('p'); if (!p) break
-                let elements = [p, objects.rb.canvas, objects.ib.canvas, objects.is.canvas, objects.rs.canvas]
+                let elements_to_hide = [elements.p, objects.rb.canvas, objects.ib.canvas, objects.is.canvas, objects.rs.canvas]
                 if (!objects.hidden) {
-                    for (let element of elements)
+                    for (let element of elements_to_hide)
                         element.style.visibility = 'hidden'
                     objects.hidden = true
                 }
                 else {
-                    for (let element of elements)
+                    for (let element of elements_to_hide)
                         element.style.visibility = 'visible'
                     objects.hidden = false;
                 }
@@ -95,8 +96,8 @@ export default function(objects) {
                 break
 
             case 'Slash':
-                let a = document.querySelector('a'); if (!a) break
-                a.click()
+                if (!elements.a) break;
+                elements.a.click()
                 break
         }
     })
