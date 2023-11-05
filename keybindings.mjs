@@ -1,5 +1,6 @@
 import g from './globals.mjs'
 import * as elements from './elements.mjs'
+import * as levels from './levels.mjs'
 
 let hide
 let last_speed
@@ -69,6 +70,15 @@ addEventListener('keydown', function (event) {
             dispatchEvent(new KeyboardEvent('keydown', {code: 'Digit0'}))
             dispatchEvent(new KeyboardEvent('keydown', {code: 'Space'}))
             g.q.speed = 1
+            break
+
+        case 'KeyN':
+            if (event.shiftKey) levels.prev()
+            else levels.next()
+            break
+
+        case 'KeyJ':
+            levels.random()
             break
 
         case 'KeyH':
