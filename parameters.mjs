@@ -23,13 +23,16 @@ if (parameters.run) {
     let actions = parameters.run.split(',')
 
     for (let action of actions) {
-        let [time_text, level] = action.split(':')
+        let [time_text, level, speed_text] = action.split(':')
         let time = parseInt(time_text)
+        let speed = parseFloat(speed_text)
         if (!time || !level) continue
+        if (!speed) speed = 1
 
         setTimeout(function () {
-            console.info(`run: ${time} seconds of ${level}`)
+            console.info(`run: ${time} seconds of ${level} at speed ${speed}`)
             levels.update(level)
+            g.q.speed = speed
         }, timeline)
 
         timeline += time * 1000
