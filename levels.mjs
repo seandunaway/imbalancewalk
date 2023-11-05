@@ -1,5 +1,5 @@
 import g from './globals.mjs'
-import levels from './levels.json' assert {type: 'json'}
+import levels from './levels_data.mjs'
 
 export let level = 0
 
