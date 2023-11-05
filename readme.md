@@ -40,12 +40,14 @@ ESC: reset everything
 ### levels
 ```
 N|ShiftN: next or previous level
+
 J: jump to random level
 ```
 
 ### utility
 ```
 H: toggle visibility
+
 C: copy to clipboard
 ```
 
