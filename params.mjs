@@ -13,5 +13,5 @@ export default function(objects) {
     if (params.is) objects.is.value = parseInt(params.is)
     if (params.ib) objects.ib.value = parseInt(params.ib)
     if (params.rb) objects.rb.value = parseInt(params.rb)
-    if (params.s) objects.q.speed = parseInt(params.s)
+    if (params.s) objects.q.speed = parseFloat(params.s)
 }
