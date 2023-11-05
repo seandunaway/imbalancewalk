@@ -95,8 +95,7 @@ export default function(objects) {
                 break
 
             case 'Slash':
-                let a = document.querySelector('a')
-                if (!a) break
+                let a = document.querySelector('a'); if (!a) break
                 a.click()
                 break
         }

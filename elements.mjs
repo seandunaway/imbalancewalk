@@ -6,3 +6,4 @@ for (let element of document.querySelectorAll('canvas')) {
 }
 
 export let p = document.querySelector('p')
+export let a = document.querySelector('a')
