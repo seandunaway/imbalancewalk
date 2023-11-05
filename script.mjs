@@ -10,8 +10,8 @@ g.is = powermeter.create({canvas: elements.canvas.is, label: 'is↓', flip: true
 g.ib = powermeter.create({canvas: elements.canvas.ib, label: 'ib↑'})
 g.rb = powermeter.create({canvas: elements.canvas.rb, label: 'rb↑'})
 
-await import('./keybindings.mjs')
-await import('./parameters.mjs')
+import('./keybindings.mjs')
+import('./parameters.mjs')
 
 async function frame_quote() {
     if (!elements.h1 || !elements.p) return
