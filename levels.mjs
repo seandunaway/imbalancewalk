@@ -23,8 +23,8 @@ export function values_from_string(string) {
     let values = []
     for (let char = 0; char < 4; char++) {
         switch (string[char]) {
-            case '0': values.push(25); break
-            case '2': values.push(75); break
+            case '0': values.push(10); break
+            case '2': values.push(90); break
             default: values.push(50); break
         }
     }
