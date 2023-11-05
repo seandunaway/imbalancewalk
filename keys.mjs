@@ -80,7 +80,9 @@ export default function(objects) {
                 break
 
             case 'Slash':
-                document.querySelector('a')?.click()
+                let a = document.querySelector('a')
+                if (!a) break
+                a.click()
                 break
         }
     })
