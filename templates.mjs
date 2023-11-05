@@ -1,9 +1,11 @@
-export function p(objects) {
+import g from './globals.mjs'
+
+export function p() {
     return `
-        rb·<b>${objects.rb.value}</b>%
-        ib·<b>${objects.ib.value}</b>%
-        is·<b>${objects.is.value}</b>%
-        rs·<b>${objects.rs.value}</b>%
-        s·<b>${objects.q.speed}</b>x
+        rb·<b>${g.rb.value}</b>%
+        ib·<b>${g.ib.value}</b>%
+        is·<b>${g.is.value}</b>%
+        rs·<b>${g.rs.value}</b>%
+        s·<b>${g.q.speed}</b>x
     `
 }
