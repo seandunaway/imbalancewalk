@@ -11,7 +11,7 @@ let is = powermeter.create({canvas: elements.canvas.is, label: 'is↓', flip: tr
 let ib = powermeter.create({canvas: elements.canvas.ib, label: 'ib↑'})
 let rb = powermeter.create({canvas: elements.canvas.rb, label: 'rb↑'})
 
-let objects = {q, rs, is, ib, rb, s: undefined}
+let objects = {q, rs, is, ib, rb, s: null, h: null}
 keys(objects)
 params(objects)
 

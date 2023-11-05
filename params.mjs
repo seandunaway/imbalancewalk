@@ -14,4 +14,5 @@ export default function(objects) {
     if (params.ib) objects.ib.value = parseInt(params.ib)
     if (params.rb) objects.rb.value = parseInt(params.rb)
     if (params.s) objects.q.speed = parseFloat(params.s)
+    if (params.h) dispatchEvent(new KeyboardEvent('keydown', {code: 'KeyH'}))
 }

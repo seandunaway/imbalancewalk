@@ -37,8 +37,9 @@ SPACE: reset quote
 ESC: reset everything
 ```
 
-### sharing
+### utility
 ```
+H: toggle visibility
 C: copy to clipboard
 ```
 

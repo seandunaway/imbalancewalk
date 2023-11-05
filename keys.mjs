@@ -68,6 +68,21 @@ export default function(objects) {
                 objects.q.speed = 1
                 break
 
+            case 'KeyH':
+                let p = document.querySelector('p'); if (!p) break
+                let elements = [p, objects.rb.canvas, objects.ib.canvas, objects.is.canvas, objects.rs.canvas]
+                if (!objects.hidden) {
+                    for (let element of elements)
+                        element.style.visibility = 'hidden'
+                    objects.hidden = true
+                }
+                else {
+                    for (let element of elements)
+                        element.style.visibility = 'visible'
+                    objects.hidden = false;
+                }
+                break
+
             case 'KeyC':
                 this.navigator.clipboard.writeText(
                     `${window.location.href.split('?')[0]}?` +
