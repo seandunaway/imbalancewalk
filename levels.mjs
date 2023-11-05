@@ -1,104 +1,45 @@
-export let i = 0
+import levels from './levels.json' assert {type: 'json'}
+
+export let level = 0
 
 export function get() {
-    return levels[i]
+    return levels[level]
 }
 
 export function next() {
-    i++
-    return levels[i]
+    level++
+    return levels[level]
 }
 
 export function prev() {
-    i = i > 1 ? i-- : levels.length - 1
-    return levels[i]
+    if (level > 0) level--
+    else level = levels.length - 1
+    return levels[level]
 }
 
 export function random() {
-    i = Math.floor(Math.random() * levels.length - 1)
-    return levels[i]
+    level = Math.floor(Math.random() * levels.length - 1)
+    return levels[level]
 }
 
-export let levels = [
-    ['0000'],
-    ['1000'],
-    ['2000'],
-    ['0100'],
-    ['1100'],
-    ['2100'],
-    ['0200'],
-    ['1200'],
-    ['2200'],
-    ['0010'],
-    ['1010'],
-    ['2010'],
-    ['0110'],
-    ['1110'],
-    ['2110'],
-    ['0210'],
-    ['1210'],
-    ['2210'],
-    ['0020'],
-    ['1020'],
-    ['2020'],
-    ['0120'],
-    ['1120'],
-    ['2120'],
-    ['0220'],
-    ['1220'],
-    ['2220'],
-    ['0001'],
-    ['1001'],
-    ['2001'],
-    ['0101'],
-    ['1101'],
-    ['2101'],
-    ['0201'],
-    ['1201'],
-    ['2201'],
-    ['0011'],
-    ['1011'],
-    ['2011'],
-    ['0111'],
-    ['1111'],
-    ['2111'],
-    ['0211'],
-    ['1211'],
-    ['2211'],
-    ['0021'],
-    ['1021'],
-    ['2021'],
-    ['0121'],
-    ['1121'],
-    ['2121'],
-    ['0221'],
-    ['1221'],
-    ['2221'],
-    ['0002'],
-    ['1002'],
-    ['2002'],
-    ['0102'],
-    ['1102'],
-    ['2102'],
-    ['0202'],
-    ['1202'],
-    ['2202'],
-    ['0012'],
-    ['1012'],
-    ['2012'],
-    ['0112'],
-    ['1112'],
-    ['2112'],
-    ['0212'],
-    ['1212'],
-    ['2212'],
-    ['0022'],
-    ['1022'],
-    ['2022'],
-    ['0122'],
-    ['1122'],
-    ['2122'],
-    ['0222'],
-    ['1222'],
-    ['2222'],
-]
+export function values_from_text(text) {
+    let values = []
+    for (let char = 0; char < 4; char++) {
+        switch (text[char]) {
+            case '0': values.push(25); break
+            case '2': values.push(75); break
+            default: values.push(50); break
+        }
+    }
+    return values
+}
+
+export function text_from_values(values) {
+    let text = ''
+    for (let i = 0; i < 4; i++) {
+        if (values[i] < 50) text += '0'
+        if (values[i] == 50) text += '1'
+        if (values[i] > 50) text += '2'
+    }
+    return text
+}
