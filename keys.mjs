@@ -70,7 +70,7 @@ export default function(objects) {
 
             case 'KeyC':
                 this.navigator.clipboard.writeText(
-                    `${window.location.href}?` +
+                    `${window.location.href.split('?')[0]}?` +
                     `rb=${objects.rb.value}&` +
                     `ib=${objects.ib.value}&` +
                     `is=${objects.is.value}&` +
