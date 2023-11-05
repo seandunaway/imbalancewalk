@@ -96,14 +96,11 @@ addEventListener('keydown', function (event) {
             break
 
         case 'KeyC':
-            this.navigator.clipboard.writeText(
-                `${window.location.href.split('?')[0]}?` +
-                `rb=${g.rb.value}&` +
-                `ib=${g.ib.value}&` +
-                `is=${g.is.value}&` +
-                `rs=${g.rs.value}&` +
-                `s=${g.q.speed}&`
-            )
+            let text = `${window.location.href.split('?')[0]}?`
+            text += 'l=' + levels.string_from_values([g.rb.value, g.ib.value, g.is.value, g.rs.value])
+            if (g.q.speed !== 1) text += `&s=${g.q.speed}`
+            if (hide) text += '&h=1'
+            this.navigator.clipboard.writeText(text)
             break
 
         case 'Slash':
