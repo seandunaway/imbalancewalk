@@ -18,5 +18,3 @@ if (parameters.rb) g.rb.value = parseInt(parameters.rb)
 
 if (parameters.s) g.q.speed = parseFloat(parameters.s)
 if (parameters.h) dispatchEvent(new KeyboardEvent('keydown', {code: 'KeyH'}))
-
-history.replaceState(null, '', window.location.pathname);
