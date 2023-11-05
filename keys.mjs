@@ -1,6 +1,6 @@
-let last_speed
-
 export default function(objects) {
+    let speed
+
     addEventListener('keydown', function (event) {
         let i = event.shiftKey ? 1 : 5
 
@@ -30,9 +30,9 @@ export default function(objects) {
 
             case 'KeyP':
                 if (!objects.q.speed)
-                    objects.q.speed = last_speed ? last_speed : 1
+                    objects.q.speed = speed ? speed : 1
                 else {
-                    last_speed = objects.q.speed
+                    speed = objects.q.speed
                     objects.q.speed = 0
                 }
                 break
