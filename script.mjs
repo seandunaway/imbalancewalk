@@ -10,9 +10,6 @@ g.is = powermeter.create({canvas: elements.canvas.is, label: 'is↓', flip: true
 g.ib = powermeter.create({canvas: elements.canvas.ib, label: 'ib↑'})
 g.rb = powermeter.create({canvas: elements.canvas.rb, label: 'rb↑'})
 
-import('./keybindings.mjs')
-import('./parameters.mjs')
-
 async function frame_quote() {
     if (!elements.h1 || !elements.p) return
 
@@ -38,3 +35,6 @@ function frame_powermeter() {
 
 frame_quote()
 frame_powermeter()
+
+await import('./keybindings.mjs')
+await import('./parameters.mjs')
