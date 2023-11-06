@@ -110,6 +110,8 @@ e.g.
 
 ## run scripts
 ```
-seconds:nnnn:speed
+&run= seconds:nnnn:speed
+
+&r= repeat
 ```
-https://seandunaway.github.io/imbalancewalk/?run=5:1211,5:2211,5:2210,5:2200,5:2210,5:2211,5:2221,5:2222,5:2122:2,5:1122:2,5:1022,10:0022
+https://seandunaway.github.io/imbalancewalk/?run=5:1211,5:2211,5:2210,5:2200,5:2210,5:2211,5:2221,5:2222,5:2122:2,5:1122:2,5:1022,10:0022&repeat=1
