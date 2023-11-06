@@ -9,7 +9,6 @@ export function update() {
     if (!enabled) return
     if (g.q.speed == 0) return
     if (g.q.value == quote) return
-    // if (g.q.value % 1 !== 0) return
 
     if (g.q.value > quote) note++
     if (g.q.value < quote) note--
