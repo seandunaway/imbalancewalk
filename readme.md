@@ -52,6 +52,8 @@ Shift+J: randomly jump to any possibility
 ```
 H: toggle visibility
 
+M: toggle music
+
 C: copy to clipboard
 ```
 

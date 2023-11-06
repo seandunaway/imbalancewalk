@@ -1,6 +1,7 @@
 import g from './globals.mjs'
 import * as elements from './elements.mjs'
 import * as levels from './levels.mjs'
+import * as music from './music.mjs'
 
 let hide
 let last_speed
@@ -85,6 +86,10 @@ addEventListener('keydown', function (event) {
                     element.style.visibility = 'visible'
                 hide = false;
             }
+            break
+
+        case 'KeyM':
+            music.toggle()
             break
 
         case 'KeyC':
