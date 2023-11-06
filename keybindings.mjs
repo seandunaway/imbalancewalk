@@ -4,7 +4,7 @@ import * as levels from './levels.mjs'
 import * as music from './music.mjs'
 
 let hide
-let last_speed
+let speed
 
 addEventListener('keydown', function (event) {
     let value = event.shiftKey ? 1 : 5
@@ -35,9 +35,9 @@ addEventListener('keydown', function (event) {
 
         case 'KeyP':
             if (!g.q.speed)
-                g.q.speed = last_speed ? last_speed : 1
+                g.q.speed = speed ? speed : 1
             else {
-                last_speed = g.q.speed
+                speed = g.q.speed
                 g.q.speed = 0
             }
             break
