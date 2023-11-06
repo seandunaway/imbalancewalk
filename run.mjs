@@ -10,7 +10,7 @@ export default function run(script, repeat = false) {
         let time = parseInt(time_text)
         let speed = parseFloat(speed_text)
         if (!time || !level) continue
-        if (!speed) speed = 1
+        if (!speed) speed = 1.0
 
         setTimeout(function () {
             console.info(`run: ${time} seconds of ${level} at speed ${speed}`)
