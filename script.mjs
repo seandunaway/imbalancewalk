@@ -23,7 +23,10 @@ async function frame_quote() {
 }
 
 function frame_powermeter() {
-    levels.update([g.rb.value, g.ib.value, g.is.value, g.rs.value])
+    g.q.rs = g.rs.value
+    g.q.is = g.is.value
+    g.q.ib = g.ib.value
+    g.q.rb = g.rb.value
     powermeter.draw(g.rs)
     powermeter.draw(g.is)
     powermeter.draw(g.ib)
