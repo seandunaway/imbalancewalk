@@ -78,8 +78,8 @@ addEventListener('keydown', function (event) {
             break
 
         case 'KeyJ':
-            if (event.shiftKey) levels.random_wild()
-            else levels.random()
+            if (event.shiftKey) levels.random_any()
+            else levels.random_data()
             break
 
         case 'KeyH':

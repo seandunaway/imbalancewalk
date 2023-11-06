@@ -1,3 +1,5 @@
+import * as random from './random.mjs'
+
 export function create(options) {
     let q = {
         value: 5000.00,
@@ -16,7 +18,7 @@ export function create(options) {
 export function update(q) {
     if (q.speed == 0) return
 
-    if (coinflip()) {
+    if (random.coinflip()) {
         buy(q)
         sell(q)
     } else {
@@ -27,28 +29,20 @@ export function update(q) {
 
 function buy(q) {
     // is there a lift by an initiative buyer?
-    if (coinflip(q.ib))
+    if (random.coinflip(q.ib))
         // is it not held by a responsive seller?
-        if (!coinflip(q.rs))
+        if (!random.coinflip(q.rs))
             q.value += q.tick
 }
 
 function sell(q) {
     // is there a hit by an initiative seller?
-    if (coinflip(q.is))
+    if (random.coinflip(q.is))
         // is it not held by a responsive buyer?
-        if (!coinflip(q.rb))
+        if (!random.coinflip(q.rb))
             q.value -= q.tick
 }
 
 export async function delay(q) {
-    await new Promise(resolve => setTimeout(resolve, rand(20, q.delay) / q.speed))
-}
-
-export function coinflip(probability = 50) {
-    return Math.random() < (probability / 100)
-}
-
-export function rand(min = 0, max = 100) {
-    return Math.floor(Math.random() * (max - min + 1) + min)
+    await new Promise(resolve => setTimeout(resolve, random.number(20, q.delay) / q.speed))
 }

@@ -1,6 +1,6 @@
 import g from './globals.mjs'
 import levels from './levels_data.mjs'
-import * as quote from './quote.mjs'
+import * as random from './random.mjs'
 
 export let level = 0
 
@@ -15,13 +15,13 @@ export function prev() {
     update(levels[level][0])
 }
 
-export function random() {
+export function random_data() {
     level = Math.floor(Math.random() * levels.length - 1)
     update(levels[level][0])
 }
 
-export function random_wild() {
-    let values = [quote.rand(10, 90), quote.rand(10, 90), quote.rand(10, 90), quote.rand(10, 90)]
+export function random_any() {
+    let values = [random.number(10, 90), random.number(10, 90), random.number(10, 90), random.number(10, 90)]
     update(values)
 }
 

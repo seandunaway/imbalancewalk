@@ -45,7 +45,7 @@ Shift+N: previous level
 
 J: randomly jump to one of the standard 81 permutations
 
-Shift+N: randomly jump to any possibility
+Shift+J: randomly jump to any possibility
 ```
 
 ### utility
