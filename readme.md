@@ -59,3 +59,44 @@ C: copy to clipboard
 ```
 ?: readme
 ```
+
+## parameters
+```
+&q= quote price
+&rs= rs
+&is= is
+&ib= ib
+&rb= rb
+&s= speed
+&h= visibility
+&l= rs/is/ib/rb in tertiary notion
+```
+
+## tertiary notion
+```
+nnnn
+
+1st n: rb
+2nd n: ib
+3nd n: is
+4th n: rs
+
+0: weak
+1: average
+2: strong
+
+e.g.
+1111: all average players
+2200: strong rb & ib, weak is & rs
+0022: strong is & rs, weak rb & ib
+2002: strong rb & rs, weak ib & is
+
+```
+
+## run scripts
+```
+seconds:nnnn:speed
+comma separated
+```
+
+https://seandunaway.github.io/imbalancewalk/?run=5:1211,5:2211,5:2210,5:2200,5:2210,5:2211,5:2221,5:2222,5:2122:2,5:1122:2,5:1022,10:0022
