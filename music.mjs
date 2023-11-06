@@ -4,7 +4,7 @@ import music from './music_data.mjs'
 export let enabled
 
 let quote
-let note = 7
+let note = 39 // C4
 
 export function update() {
     if (!enabled) return
