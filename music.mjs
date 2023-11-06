@@ -1,7 +1,8 @@
 import g from './globals.mjs'
 import music from './music_data.mjs'
 
-let enabled
+export let enabled
+
 let quote
 let note = 7
 
