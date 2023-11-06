@@ -38,5 +38,5 @@ function frame_powermeter() {
 frame_quote()
 frame_powermeter()
 
-await import('./keybindings.mjs')
-await import('./parameters.mjs')
+import('./keybindings.mjs')
+import('./parameters.mjs')
