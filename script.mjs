@@ -3,6 +3,7 @@ import * as elements from './elements.mjs'
 import * as templates from './templates.mjs'
 import * as powermeter from './powermeter.mjs'
 import * as quote from './quote.mjs'
+import * as levels from './levels.mjs'
 
 g.q = quote.create()
 g.rs = powermeter.create({canvas: elements.canvas.rs, label: 'rs↓', flip: true})
@@ -22,10 +23,7 @@ async function frame_quote() {
 }
 
 function frame_powermeter() {
-    g.q.rs = g.rs.value
-    g.q.is = g.is.value
-    g.q.ib = g.ib.value
-    g.q.rb = g.rb.value
+    levels.update([g.rb.value, g.ib.value, g.is.value, g.rs.value])
     powermeter.draw(g.rs)
     powermeter.draw(g.is)
     powermeter.draw(g.ib)

@@ -42,24 +42,15 @@ addEventListener('keydown', function (event) {
             break
 
         case 'Minus':
-            g.rb.value = 0
-            g.ib.value = 0
-            g.is.value = 0
-            g.rs.value = 0
+            levels.update([0, 0, 0, 0])
             break
 
         case 'Equal':
-            g.rb.value = 100
-            g.ib.value = 100
-            g.is.value = 100
-            g.rs.value = 100
+            levels.update([100, 100, 100, 100])
             break
 
         case 'Digit0':
-            g.rb.value = 50
-            g.ib.value = 50
-            g.is.value = 50
-            g.rs.value = 50
+            levels.update([50, 50, 50, 50])
             break
 
         case 'Space':
