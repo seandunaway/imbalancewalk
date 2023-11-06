@@ -1,4 +1,5 @@
 import g from './globals.mjs'
+import run from './run.mjs'
 import * as levels from './levels.mjs'
 
 let search = new URLSearchParams(window.location.search)
@@ -18,30 +19,4 @@ if (parameters.rb) g.rb.value = parseInt(parameters.rb)
 if (parameters.s) g.q.speed = parseFloat(parameters.s)
 if (parameters.h) dispatchEvent(new KeyboardEvent('keydown', {code: 'KeyH'}))
 
-if (parameters.run) {
-    let timeline = 0
-    let actions = parameters.run.split(',')
-
-    for (let action of actions) {
-        let [time_text, level, speed_text] = action.split(':')
-        let time = parseInt(time_text)
-        let speed = parseFloat(speed_text)
-        if (!time || !level) continue
-        if (!speed) speed = 1
-
-        setTimeout(function () {
-            console.info(`run: ${time} seconds of ${level} at speed ${speed}`)
-            levels.update(level)
-            g.q.speed = speed
-        }, timeline)
-
-        timeline += time * 1000
-    }
-
-    // last
-    setTimeout(function () {
-        console.info('run: done!')
-        levels.update([50, 50, 50, 50])
-        g.q.speed = 0
-    }, timeline)
-}
+if (parameters.run) run(parameters.run, parameters.r)
