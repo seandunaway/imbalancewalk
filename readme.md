@@ -79,7 +79,7 @@ C: copy to clipboard
 &l= rs/is/ib/rb in tertiary notion
 ```
 
-## tertiary notion
+## tertiary notation
 ```
 nnnn
 
