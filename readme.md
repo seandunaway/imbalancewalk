@@ -39,9 +39,13 @@ ESC: reset everything
 
 ### levels
 ```
-N|ShiftN: next or previous level
+N: next level
 
-J: jump to random level
+Shift+N: previous level
+
+J: randomly jump to one of the standard 81 permutations
+
+Shift+N: randomly jump to any possibility
 ```
 
 ### utility
