@@ -24,7 +24,6 @@ export default function run(script, repeat = false) {
         timeline += time * 1000
     }
 
-    // last
     setTimeout(function () {
         console.info('run: done!')
         if (repeat) return run(script, repeat)
