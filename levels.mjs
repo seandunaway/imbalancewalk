@@ -16,8 +16,8 @@ export function prev() {
 }
 
 export function random_data() {
-    level = Math.floor(Math.random() * levels.length - 1)
-    update(levels[level][0])
+    level = random.array_value(levels)
+    update(level)
 }
 
 export function random_any() {
