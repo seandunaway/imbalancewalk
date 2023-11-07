@@ -2,17 +2,18 @@ import g from './globals.mjs'
 import levels from './levels_data.mjs'
 import * as random from './random.mjs'
 
-export let level = 0
+export let level
 
 export function next() {
-    level++
-    update(levels[level][0])
+    if (level < levels.length - 1) level++
+    else level = 0
+    update(levels[level])
 }
 
 export function prev() {
     if (level > 0) level--
     else level = levels.length - 1
-    update(levels[level][0])
+    update(levels[level])
 }
 
 export function random_data() {
