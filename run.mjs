@@ -12,6 +12,9 @@ export default function run(script, repeat = false) {
         if (!time || !level) continue
         if (!speed) speed = 1.0
 
+        let match = level.match(/(\d{2})(\d{2})(\d{2})(\d{2})/)
+        if (match) level = [parseInt(match[1]), parseInt(match[2]), parseInt(match[3]), parseInt(match[4])]
+
         setTimeout(function () {
             console.info(`run: ${time} seconds of ${level} at speed ${speed}`)
             levels.update(level)
