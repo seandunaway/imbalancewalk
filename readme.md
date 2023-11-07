@@ -125,7 +125,9 @@ where rb, ib, is, rs are two digit numbers representing percentage
 
 &r= repeat
 ```
-https://seandunaway.github.io/imbalancewalk/?run=5:1211,5:2211,5:2210,5:2200,5:2210,5:2211,5:2221,5:2222,5:2122:2,5:1122:2,5:1022,10:0022&r=1
+https://seandunaway.github.io/imbalancewalk/?run=5:0000,5:2222,5:2020,5:0202&r=1
+
+https://seandunaway.github.io/imbalancewalk/?run=5:10101010,5:90909090,5:66336633,5:33663366&r=1
 
 ## 81 permutations (3^4)
 
