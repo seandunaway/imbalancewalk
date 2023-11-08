@@ -3,7 +3,8 @@ import music from './music_data.mjs'
 import * as random from './random.mjs'
 
 export let enabled
-let note = 0
+export let note = 0
+
 let quote
 
 export function update() {
