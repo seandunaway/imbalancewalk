@@ -41,11 +41,3 @@ export function toggle() {
     if (!enabled) enabled = true
     else enabled = undefined
 }
-
-function gaussian(array, i) {
-        let a = 1.0
-        let b = array.length / 2
-        let c = array.length / 4
-        let x = i
-        return a * Math.exp(-(((x - b) / c)**2))
-}
