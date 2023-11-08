@@ -14,7 +14,6 @@ export function array_gaussian(array, i) {
     return a * Math.exp(-(((x - b) / c)**2))
 }
 
-
 export function array_value(array) {
     return array[number(0, array.length - 1)]
 }
