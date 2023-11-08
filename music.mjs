@@ -30,8 +30,8 @@ export function play() {
     osc.connect(gain).connect(ctx.destination)
 
     osc.frequency.value = music[note]
-    gain.gain.setValueAtTime(0.25, ctx.currentTime)
-    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.10)
+    gain.gain.linearRampToValueAtTime(0.25, ctx.currentTime)
+    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.20)
 
     osc.start()
     setTimeout(function() {ctx.close()}, 1000)
