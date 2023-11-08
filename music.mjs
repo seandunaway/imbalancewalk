@@ -26,16 +26,16 @@ export function update() {
 export function play() {
     let ctx = new AudioContext()
 
-    for (let i = 1; i <= 6; i++) {
+    for (let i = 0; i < 7; i++) {
         let osc = ctx.createOscillator()
         let gain = ctx.createGain()
         osc.connect(gain).connect(ctx.destination)
 
-        let note_wrapped = wrap(note + (i * 12))
-        osc.frequency.value = music[note_wrapped]
+        let note_wrap = wrap(note + (i * 12))
+        osc.frequency.value = music[note_wrap]
 
-        let gain_volume = random.array_gaussian(music, note_wrapped)
-        gain.gain.setValueAtTime(gain_volume / 3, ctx.currentTime)
+        let gain_volume = gaussian(note_wrap)
+        gain.gain.setValueAtTime(gain_volume, ctx.currentTime)
         gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.10)
 
         osc.start()
@@ -46,6 +46,14 @@ export function play() {
 
 function wrap(i) {
     return i > music.length - 1 ? 0 + (i - (music.length - 1)) : i
+}
+
+function gaussian(i) {
+    let a = 0.33
+    let b = music.length / 3
+    let c = music.length / 4
+    let x = i
+    return a * Math.exp(-(((x - b) / c)**2))
 }
 
 export function toggle() {
