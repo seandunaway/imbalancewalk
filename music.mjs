@@ -2,7 +2,7 @@ import g from './globals.mjs'
 import music from './music_data.mjs'
 
 export let enabled
-export let note = 36 // C4
+export let note = Math.round(music.length / 2)
 
 let quote
 
