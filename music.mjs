@@ -16,8 +16,7 @@ export function update() {
     if (g.q.value > quote) note++
     if (g.q.value < quote) note--
 
-    if (note > music.length - 1) note = 0
-    if (note < 0) note = music.length - 1
+    if (note < 0 || note > music.length - 1) center()
 
     play()
 
@@ -40,7 +39,7 @@ export function play() {
 }
 
 export function center() {
-    note = Math.round(music.length / 2)
+    note = Math.round((music.length - 1) / 2)
 }
 
 export function toggle() {
