@@ -89,7 +89,8 @@ addEventListener('keydown', function (event) {
             break
 
         case 'KeyM':
-            music.toggle()
+            if (event.shiftKey) music.center()
+            else music.toggle()
             break
 
         case 'KeyC':

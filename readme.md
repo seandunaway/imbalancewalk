@@ -54,6 +54,8 @@ H: toggle visibility
 
 M: toggle music
 
+Shift+M: re-center music
+
 C: copy to clipboard
 ```
 
