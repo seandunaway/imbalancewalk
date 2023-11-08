@@ -2,7 +2,7 @@ import g from './globals.mjs'
 import music from './music_data.mjs'
 
 export let enabled
-export let note = 0
+export let note = 36 // C4
 
 let quote
 
@@ -25,34 +25,16 @@ export function update() {
 export function play() {
     let ctx = new AudioContext()
 
-    for (let i = 0; i < 7; i++) {
-        let osc = ctx.createOscillator()
-        let gain = ctx.createGain()
-        osc.connect(gain).connect(ctx.destination)
+    let osc = ctx.createOscillator()
+    let gain = ctx.createGain()
+    osc.connect(gain).connect(ctx.destination)
 
-        let note_wrap = wrap(note + (i * 12))
-        osc.frequency.value = music[note_wrap]
+    osc.frequency.value = music[note]
+    gain.gain.setValueAtTime(0.25, ctx.currentTime)
+    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.10)
 
-        let gain_volume = gaussian(note_wrap)
-        gain.gain.setValueAtTime(gain_volume, ctx.currentTime)
-        gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.10)
-
-        osc.start()
-    }
-
+    osc.start()
     setTimeout(function() {ctx.close()}, 1000)
-}
-
-function wrap(i) {
-    return i > music.length - 1 ? 0 + (i - (music.length - 1)) : i
-}
-
-function gaussian(i) {
-    let a = 0.33
-    let b = music.length / 3
-    let c = music.length / 4
-    let x = i
-    return a * Math.exp(-(((x - b) / c)**2))
 }
 
 export function toggle() {
