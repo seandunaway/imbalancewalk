@@ -1,5 +1,5 @@
 import g from './globals.mjs'
-import run from './run.mjs'
+import * as run from './run.mjs'
 import * as levels from './levels.mjs'
 
 let search = new URLSearchParams(window.location.search)
@@ -19,4 +19,4 @@ if (parameters.rb) g.rb.value = parseInt(parameters.rb)
 if (parameters.s) g.q.speed = parseFloat(parameters.s)
 if (parameters.h) setTimeout(function () {dispatchEvent(new KeyboardEvent('keydown', {code: 'KeyH'}))}, 1000)
 
-if (parameters.run) run(parameters.run, parameters.r)
+if (parameters.run) run.init({script_text: parameters.run, repeat: parameters.r})
