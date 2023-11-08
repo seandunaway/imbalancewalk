@@ -22,12 +22,11 @@ export function play() {
     let ctx = new AudioContext()
     let osc = ctx.createOscillator()
     let gain = ctx.createGain()
-    gain.gain.value = 0
     osc.connect(gain).connect(ctx.destination)
-    osc.start()
     osc.frequency.value = note_from_music()
-    gain.gain.linearRampToValueAtTime(0.33, ctx.currentTime + 0.10)
-    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.20)
+    gain.gain.setValueAtTime(0.33, ctx.currentTime)
+    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.10)
+    osc.start()
     setTimeout(function() {ctx.close()}, 1000)
 }
 
