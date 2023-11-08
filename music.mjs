@@ -39,11 +39,11 @@ export function play() {
     setTimeout(function() {ctx.close()}, 1000)
 }
 
+export function center() {
+    note = Math.round(music.length / 2)
+}
+
 export function toggle() {
     if (!enabled) enabled = true
     else enabled = undefined
-}
-
-export function center() {
-    note = Math.round(music.length / 2)
 }
