@@ -1,6 +1,5 @@
 import g from './globals.mjs'
 import music from './music_data.mjs'
-import * as random from './random.mjs'
 
 export let enabled
 export let note = 0
