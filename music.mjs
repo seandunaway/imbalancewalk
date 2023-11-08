@@ -2,7 +2,8 @@ import g from './globals.mjs'
 import music from './music_data.mjs'
 
 export let enabled
-export let note = Math.round(music.length / 2)
+export let note
+center()
 
 let quote
 
@@ -40,4 +41,8 @@ export function play() {
 export function toggle() {
     if (!enabled) enabled = true
     else enabled = undefined
+}
+
+export function center() {
+    note = Math.round(music.length / 2)
 }
