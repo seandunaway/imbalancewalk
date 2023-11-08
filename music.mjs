@@ -1,10 +1,10 @@
 import g from './globals.mjs'
 import music from './music_data.mjs'
+import * as random from './random.mjs'
 
 export let enabled
-
+let note = 0
 let quote
-let note = 39 // C4
 
 export function update() {
     if (!enabled) return
@@ -13,6 +13,10 @@ export function update() {
 
     if (g.q.value > quote) note++
     if (g.q.value < quote) note--
+
+    if (note > music.length - 1) note = 0
+    if (note < 0) note = music.length - 1
+
     play()
 
     quote = g.q.value
@@ -20,20 +24,27 @@ export function update() {
 
 export function play() {
     let ctx = new AudioContext()
-    let osc = ctx.createOscillator()
-    let gain = ctx.createGain()
-    osc.connect(gain).connect(ctx.destination)
-    osc.frequency.value = note_from_music()
-    gain.gain.setValueAtTime(0.33, ctx.currentTime)
-    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.10)
-    osc.start()
+
+    for (let i = 1; i <= 6; i++) {
+        let osc = ctx.createOscillator()
+        let gain = ctx.createGain()
+        osc.connect(gain).connect(ctx.destination)
+
+        let note_wrapped = wrap(note + (i * 12))
+        osc.frequency.value = music[note_wrapped]
+
+        let gain_volume = random.array_gaussian(music, note_wrapped)
+        gain.gain.setValueAtTime(gain_volume / 3, ctx.currentTime)
+        gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.10)
+
+        osc.start()
+    }
+
     setTimeout(function() {ctx.close()}, 1000)
 }
 
-function note_from_music() {
-    if (note > music.length - 1) note = 0
-    if (note < 0) note = music.length - 1
-    return music[note]
+function wrap(i) {
+    return i > music.length - 1 ? 0 + (i - (music.length - 1)) : i
 }
 
 export function toggle() {
