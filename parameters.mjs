@@ -16,7 +16,7 @@ if (parameters.is) g.is.value = parseInt(parameters.is)
 if (parameters.ib) g.ib.value = parseInt(parameters.ib)
 if (parameters.rb) g.rb.value = parseInt(parameters.rb)
 
+if (parameters.run) run.init({script_text: parameters.run, repeat: parameters.r})
+
 if (parameters.s) g.q.speed = parseFloat(parameters.s)
 if (parameters.h) setTimeout(function () {dispatchEvent(new KeyboardEvent('keydown', {code: 'KeyH'}))}, 1000)
-
-if (parameters.run) run.init({script_text: parameters.run, repeat: parameters.r})
