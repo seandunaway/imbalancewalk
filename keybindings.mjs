@@ -77,12 +77,12 @@ addEventListener('keydown', function (event) {
         case 'KeyH':
             if (!hide) {
                 for (let element of elements.not_h1)
-                    element.style.visibility = 'hidden'
+                    element.setAttribute('invisible', '')
                 hide = true
             }
             else {
                 for (let element of elements.not_h1)
-                    element.style.visibility = 'visible'
+                    element.removeAttribute('invisible')
                 hide = false;
             }
             break

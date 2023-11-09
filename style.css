@@ -35,7 +35,7 @@ h1 {
     top: 50%;
     transform: translate(-50%, -50%);
 }
-h1:has(+canvas[style*='hidden']) {
+h1:has(+canvas[invisible]) {
     border: none;
 }
 
@@ -62,4 +62,8 @@ a {
     position: fixed;
     text-decoration: none;
     transform: translate(-50%);
+}
+
+[invisible] {
+    visibility: hidden;
 }
