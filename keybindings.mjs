@@ -75,14 +75,13 @@ addEventListener('keydown', function (event) {
             break
 
         case 'KeyH':
-            let elements_to_hide = [elements.p, elements.canvas.rb, elements.canvas.ib, elements.canvas.is, elements.canvas.rs]
             if (!hide) {
-                for (let element of elements_to_hide)
+                for (let element of elements.not_h1)
                     element.style.visibility = 'hidden'
                 hide = true
             }
             else {
-                for (let element of elements_to_hide)
+                for (let element of elements.not_h1)
                     element.style.visibility = 'visible'
                 hide = false;
             }
