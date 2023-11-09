@@ -35,6 +35,9 @@ h1 {
     top: 50%;
     transform: translate(-50%, -50%);
 }
+h1:has(+canvas[style*='hidden']) {
+    border: none;
+}
 
 p {
     background-color: var(--black);
