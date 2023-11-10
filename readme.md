@@ -57,6 +57,8 @@ M: toggle music
 Shift+M: center music
 
 C: copy to clipboard
+
+;: log statistics
 ```
 
 ### help

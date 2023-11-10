@@ -4,6 +4,7 @@ import * as templates from './templates.mjs'
 import * as powermeter from './powermeter.mjs'
 import * as quote from './quote.mjs'
 import * as music from './music.mjs'
+import * as statistics from './statistics.mjs'
 
 g.q = quote.create()
 g.rs = powermeter.create({canvas: elements.canvas.rs, label: 'rs↓', flip: true})
@@ -17,7 +18,9 @@ async function frame_quote() {
     quote.update(g.q)
     elements.h1.textContent = g.q.value.toFixed(2)
     elements.p.innerHTML = templates.p()
+
     music.update()
+    statistics.update()
 
     await quote.delay(g.q)
     requestAnimationFrame(frame_quote)

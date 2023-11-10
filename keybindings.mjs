@@ -2,6 +2,7 @@ import g from './globals.mjs'
 import * as elements from './elements.mjs'
 import * as levels from './levels.mjs'
 import * as music from './music.mjs'
+import * as statistics from './statistics.mjs'
 
 let hide
 let speed
@@ -101,6 +102,10 @@ addEventListener('keydown', function (event) {
             if (g.q.speed !== 1) text += `&s=${g.q.speed}`
             if (hide) text += '&h=1'
             this.navigator.clipboard.writeText(text)
+            break
+
+        case 'Semicolon':
+            statistics.log()
             break
 
         case 'Slash':
