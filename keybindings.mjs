@@ -23,14 +23,12 @@ addEventListener('keydown', function (event) {
         case 'KeyT':
         case 'ArrowUp':
             if (g.q.speed >= 1) g.q.speed++
-            else if (g.q.speed == 0) g.q.speed = 1
             else g.q.speed *= 2
             break
 
         case 'KeyG':
         case 'ArrowDown':
-            if (g.q.speed >= 1) g.q.speed--
-            else if (g.q.speed == 0) g.q.speed = 0.50
+            if (g.q.speed > 1) g.q.speed--
             else g.q.speed /= 2
             break
 
