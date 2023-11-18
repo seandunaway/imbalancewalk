@@ -55,6 +55,7 @@ addEventListener('keydown', function (event) {
 
         case 'Space':
             g.q.value = 5000.00
+            music.center()
             break
 
         case 'Escape':
